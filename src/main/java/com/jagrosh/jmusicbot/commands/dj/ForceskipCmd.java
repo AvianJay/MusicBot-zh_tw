@@ -1,17 +1,16 @@
 /*
- * Copyright 2016 John Grosh <john.a.grosh@gmail.com>.
+ * 版權所有 2016 John Grosh <john.a.grosh@gmail.com>.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * 根據 Apache 許可證 2.0 版（"許可證"）授權；
+ * 除非遵守許可證，否則你不能使用此檔案。
+ * 你可以在以下網址獲得許可證副本：
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 除非適用的法律要求或書面同意，
+ * 根據許可證分發的軟體是在 "原樣" 基礎上提供的，
+ * 不附帶任何形式的明示或默示擔保或條件。
+ * 有關許可證下具體語言的權限和限制，請參見許可證。
  */
 package com.jagrosh.jmusicbot.commands.dj;
 
@@ -32,7 +31,7 @@ public class ForceskipCmd extends DJCommand
     {
         super(bot);
         this.name = "forceskip";
-        this.help = "skips the current song";
+        this.help = "跳過當前歌曲";
         this.aliases = bot.getConfig().getAliases(this.name);
         this.bePlaying = true;
     }
@@ -42,8 +41,8 @@ public class ForceskipCmd extends DJCommand
     {
         AudioHandler handler = (AudioHandler)event.getGuild().getAudioManager().getSendingHandler();
         RequestMetadata rm = handler.getRequestMetadata();
-        event.reply(event.getClient().getSuccess()+" Skipped **"+handler.getPlayer().getPlayingTrack().getInfo().title
-                +"** "+(rm.getOwner() == 0L ? "(autoplay)" : "(requested by **" + FormatUtil.formatUsername(rm.user) + "**)"));
+        event.reply(event.getClient().getSuccess() + " 已跳過 **" + handler.getPlayer().getPlayingTrack().getInfo().title
+                + "** " + (rm.getOwner() == 0L ? "(自動播放)" : "(由 **" + FormatUtil.formatUsername(rm.user) + "** 請求)"));
         handler.getPlayer().stopTrack();
     }
 }
