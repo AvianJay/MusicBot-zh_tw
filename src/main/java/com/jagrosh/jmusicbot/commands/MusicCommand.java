@@ -1,17 +1,16 @@
 /*
- * Copyright 2018 John Grosh <john.a.grosh@gmail.com>.
+ * 版權所有 2018 John Grosh <john.a.grosh@gmail.com>.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * 根據 Apache 許可證 2.0 版（"許可證"）授權；
+ * 除非遵守許可證，否則你不能使用此檔案。
+ * 你可以在以下網址獲得許可證副本：
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 除非適用的法律要求或書面同意，
+ * 根據許可證分發的軟體是在 "原樣" 基礎上提供的，
+ * 不附帶任何形式的明示或默示擔保或條件。
+ * 有關許可證下具體語言的權限和限制，請參見許可證。
  */
 package com.jagrosh.jmusicbot.commands;
 
@@ -47,37 +46,37 @@ public abstract class MusicCommand extends Command
     {
         Settings settings = event.getClient().getSettingsFor(event.getGuild());
         TextChannel tchannel = settings.getTextChannel(event.getGuild());
-        if(tchannel!=null && !event.getTextChannel().equals(tchannel))
+        if(tchannel != null && !event.getTextChannel().equals(tchannel))
         {
             try 
             {
                 event.getMessage().delete().queue();
             } catch(PermissionException ignore){}
-            event.replyInDm(event.getClient().getError()+" You can only use that command in "+tchannel.getAsMention()+"!");
+            event.replyInDm(event.getClient().getError()+" 你只能在 "+tchannel.getAsMention()+" 使用這個指令!");
             return;
         }
-        bot.getPlayerManager().setUpHandler(event.getGuild()); // no point constantly checking for this later
+        bot.getPlayerManager().setUpHandler(event.getGuild()); // 沒必要一直檢查
         if(bePlaying && !((AudioHandler)event.getGuild().getAudioManager().getSendingHandler()).isMusicPlaying(event.getJDA()))
         {
-            event.reply(event.getClient().getError()+" There must be music playing to use that!");
+            event.reply(event.getClient().getError()+" 必須有音樂在播放才能使用這個指令!");
             return;
         }
         if(beListening)
         {
             VoiceChannel current = event.getGuild().getSelfMember().getVoiceState().getChannel();
-            if(current==null)
+            if(current == null)
                 current = settings.getVoiceChannel(event.getGuild());
             GuildVoiceState userState = event.getMember().getVoiceState();
-            if(!userState.inVoiceChannel() || userState.isDeafened() || (current!=null && !userState.getChannel().equals(current)))
+            if(!userState.inVoiceChannel() || userState.isDeafened() || (current != null && !userState.getChannel().equals(current)))
             {
-                event.replyError("You must be listening in "+(current==null ? "a voice channel" : current.getAsMention())+" to use that!");
+                event.replyError("你必須在 "+(current == null ? "語音頻道" : current.getAsMention())+" 聆聽才能使用這個指令!");
                 return;
             }
 
             VoiceChannel afkChannel = userState.getGuild().getAfkChannel();
             if(afkChannel != null && afkChannel.equals(userState.getChannel()))
             {
-                event.replyError("You cannot use that command in an AFK channel!");
+                event.replyError("你不能在 AFK 頻道使用這個指令!");
                 return;
             }
 
@@ -89,7 +88,7 @@ public abstract class MusicCommand extends Command
                 }
                 catch(PermissionException ex) 
                 {
-                    event.reply(event.getClient().getError()+" I am unable to connect to "+userState.getChannel().getAsMention()+"!");
+                    event.reply(event.getClient().getError()+" 我無法連接到 "+userState.getChannel().getAsMention()+"!");
                     return;
                 }
             }
