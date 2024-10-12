@@ -3,7 +3,7 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * you may obtain a copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -33,7 +33,7 @@ public class VolumeCmd extends DJCommand
         super(bot);
         this.name = "volume";
         this.aliases = bot.getConfig().getAliases(this.name);
-        this.help = "sets or shows volume";
+        this.help = "設置或顯示音量";
         this.arguments = "[0-150]";
     }
 
@@ -45,7 +45,7 @@ public class VolumeCmd extends DJCommand
         int volume = handler.getPlayer().getVolume();
         if(event.getArgs().isEmpty())
         {
-            event.reply(FormatUtil.volumeIcon(volume)+" Current volume is `"+volume+"`");
+            event.reply(FormatUtil.volumeIcon(volume)+" 當前音量為 `"+volume+"`");
         }
         else
         {
@@ -56,12 +56,12 @@ public class VolumeCmd extends DJCommand
                 nvolume = -1;
             }
             if(nvolume<0 || nvolume>150)
-                event.reply(event.getClient().getError()+" Volume must be a valid integer between 0 and 150!");
+                event.reply(event.getClient().getError()+" 音量必須是有效的整數，範圍在 0 到 150 之間！");
             else
             {
                 handler.getPlayer().setVolume(nvolume);
                 settings.setVolume(nvolume);
-                event.reply(FormatUtil.volumeIcon(nvolume)+" Volume changed from `"+volume+"` to `"+nvolume+"`");
+                event.reply(FormatUtil.volumeIcon(nvolume)+" 音量從 `"+volume+"` 更改為 `"+nvolume+"`");
             }
         }
     }
