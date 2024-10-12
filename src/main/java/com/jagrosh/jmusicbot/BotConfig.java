@@ -1,17 +1,16 @@
 /*
- * Copyright 2018 John Grosh (jagrosh)
+ * 版權所有 2018 John Grosh (jagrosh)
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * 根據 Apache 許可證 2.0 版（"許可證"）授權；
+ * 除非遵守許可證，否則你不能使用此檔案。
+ * 你可以在以下網址獲得許可證副本：
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 除非適用的法律要求或書面同意，
+ * 根據許可證分發的軟體是在 "原樣" 基礎上提供的，
+ * 不附帶任何形式的明示或默示擔保或條件。
+ * 有關許可證下具體語言的權限和限制，請參見許可證。
  */
 package com.jagrosh.jmusicbot;
 
@@ -35,8 +34,8 @@ public class BotConfig
 {
     private final Prompt prompt;
     private final static String CONTEXT = "Config";
-    private final static String START_TOKEN = "/// START OF JMUSICBOT CONFIG ///";
-    private final static String END_TOKEN = "/// END OF JMUSICBOT CONFIG ///";
+    private final static String START_TOKEN = "/// JMUSICBOT 設定開始 ///";
+    private final static String END_TOKEN = "/// JMUSICBOT 設定結束 ///";
     
     private Path path = null;
     private String token, prefix, altprefix, helpWord, playlistsFolder, logLevel,
@@ -61,17 +60,16 @@ public class BotConfig
     {
         valid = false;
         
-        // read config from file
+        // 從檔案中讀取設定
         try 
         {
-            // get the path to the config, default config.txt
+            // 取得設定檔路徑，預設為 config.txt
             path = getConfigPath();
             
-            // load in the config file, plus the default values
-            //Config config = ConfigFactory.parseFile(path.toFile()).withFallback(ConfigFactory.load());
+            // 載入設定檔，並加入預設值
             Config config = ConfigFactory.load();
             
-            // set values
+            // 設定值
             token = config.getString("token");
             prefix = config.getString("prefix");
             altprefix = config.getString("altprefix");
@@ -100,19 +98,19 @@ public class BotConfig
             skipratio = config.getDouble("skipratio");
             dbots = owner == 113156185389092864L;
             
-            // we may need to write a new config file
+            // 可能需要寫入新的設定檔
             boolean write = false;
 
-            // validate bot token
+            // 驗證機器人代碼
             if(token==null || token.isEmpty() || token.equalsIgnoreCase("BOT_TOKEN_HERE"))
             {
-                token = prompt.prompt("Please provide a bot token."
-                        + "\nInstructions for obtaining a token can be found here:"
-                        + "\nhttps://github.com/jagrosh/MusicBot/wiki/Getting-a-Bot-Token."
-                        + "\nBot Token: ");
+                token = prompt.prompt("請提供一個機器人代碼。"
+                        + "\n獲取代碼的說明可在此找到："
+                        + "\nhttps://github.com/jagrosh/MusicBot/wiki/Getting-a-Bot-Token。"
+                        + "\n機器人代碼: ");
                 if(token==null)
                 {
-                    prompt.alert(Prompt.Level.WARNING, CONTEXT, "No token provided! Exiting.\n\nConfig Location: " + path.toAbsolutePath().toString());
+                    prompt.alert(Prompt.Level.WARNING, CONTEXT, "未提供代碼！程式結束。\n\n設定檔位置：" + path.toAbsolutePath().toString());
                     return;
                 }
                 else
@@ -121,16 +119,16 @@ public class BotConfig
                 }
             }
             
-            // validate bot owner
+            // 驗證擁有者 ID
             if(owner<=0)
             {
                 try
                 {
-                    owner = Long.parseLong(prompt.prompt("Owner ID was missing, or the provided owner ID is not valid."
-                        + "\nPlease provide the User ID of the bot's owner."
-                        + "\nInstructions for obtaining your User ID can be found here:"
+                    owner = Long.parseLong(prompt.prompt("擁有者 ID 缺失，或提供的擁有者 ID 無效。"
+                        + "\n請提供機器人擁有者的用戶 ID。"
+                        + "\n找到你的用戶 ID 的說明可在此找到："
                         + "\nhttps://github.com/jagrosh/MusicBot/wiki/Finding-Your-User-ID"
-                        + "\nOwner User ID: "));
+                        + "\n擁有者用戶 ID: "));
                 }
                 catch(NumberFormatException | NullPointerException ex)
                 {
@@ -138,7 +136,7 @@ public class BotConfig
                 }
                 if(owner<=0)
                 {
-                    prompt.alert(Prompt.Level.ERROR, CONTEXT, "Invalid User ID! Exiting.\n\nConfig Location: " + path.toAbsolutePath().toString());
+                    prompt.alert(Prompt.Level.ERROR, CONTEXT, "無效的用戶 ID！程式結束。\n\n設定檔位置：" + path.toAbsolutePath().toString());
                     return;
                 }
                 else
@@ -150,12 +148,12 @@ public class BotConfig
             if(write)
                 writeToFile();
             
-            // if we get through the whole config, it's good to go
+            // 如果設定成功載入，則標記為有效
             valid = true;
         }
         catch (ConfigException ex)
         {
-            prompt.alert(Prompt.Level.ERROR, CONTEXT, ex + ": " + ex.getMessage() + "\n\nConfig Location: " + path.toAbsolutePath().toString());
+            prompt.alert(Prompt.Level.ERROR, CONTEXT, ex + ": " + ex.getMessage() + "\n\n設定檔位置：" + path.toAbsolutePath().toString());
         }
     }
     
@@ -170,8 +168,8 @@ public class BotConfig
         }
         catch(IOException ex) 
         {
-            prompt.alert(Prompt.Level.WARNING, CONTEXT, "Failed to write new config options to config.txt: "+ex
-                + "\nPlease make sure that the files are not on your desktop or some other restricted area.\n\nConfig Location: " 
+            prompt.alert(Prompt.Level.WARNING, CONTEXT, "寫入新的設定選項至 config.txt 失敗: "+ex
+                + "\n請確保檔案不在桌面或其他受限制的區域。\n\n設定檔位置：" 
                 + path.toAbsolutePath().toString());
         }
     }
@@ -199,17 +197,17 @@ public class BotConfig
     public static void writeDefaultConfig()
     {
         Prompt prompt = new Prompt(null, null, true, true);
-        prompt.alert(Prompt.Level.INFO, "JMusicBot Config", "Generating default config file");
+        prompt.alert(Prompt.Level.INFO, "JMusicBot 設定", "生成預設設定檔");
         Path path = BotConfig.getConfigPath();
         byte[] bytes = BotConfig.loadDefaultConfig().getBytes();
         try
         {
-            prompt.alert(Prompt.Level.INFO, "JMusicBot Config", "Writing default config file to " + path.toAbsolutePath().toString());
+            prompt.alert(Prompt.Level.INFO, "JMusicBot 設定", "寫入預設設定檔至 " + path.toAbsolutePath().toString());
             Files.write(path, bytes);
         }
         catch(Exception ex)
         {
-            prompt.alert(Prompt.Level.ERROR, "JMusicBot Config", "An error occurred writing the default config file: " + ex.getMessage());
+            prompt.alert(Prompt.Level.ERROR, "JMusicBot 設定", "寫入預設設定檔時發生錯誤: " + ex.getMessage());
         }
     }
     
