@@ -1,17 +1,16 @@
 /*
- * Copyright 2019 John Grosh <john.a.grosh@gmail.com>.
+ * 版權所有 2019 John Grosh <john.a.grosh@gmail.com>.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * 根據 Apache 許可證 2.0 版（"許可證"）授權；
+ * 除非遵守許可證，否則你不能使用此檔案。
+ * 你可以在以下網址獲得許可證副本：
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 除非適用的法律要求或書面同意，
+ * 根據許可證分發的軟體是在 "原樣" 基礎上提供的，
+ * 不附帶任何形式的明示或默示擔保或條件。
+ * 有關許可證下具體語言的權限和限制，請參見許可證。
  */
 package com.jagrosh.jmusicbot.commands.dj;
 
@@ -39,7 +38,7 @@ public class ForceRemoveCmd extends DJCommand
     {
         super(bot);
         this.name = "forceremove";
-        this.help = "removes all entries by a user from the queue";
+        this.help = "從佇列中刪除用戶的所有條目";
         this.arguments = "<user>";
         this.aliases = bot.getConfig().getAliases(this.name);
         this.beListening = false;
@@ -52,47 +51,45 @@ public class ForceRemoveCmd extends DJCommand
     {
         if (event.getArgs().isEmpty())
         {
-            event.replyError("You need to mention a user!");
+            event.replyError("你需要提及一位用戶！");
             return;
         }
 
         AudioHandler handler = (AudioHandler) event.getGuild().getAudioManager().getSendingHandler();
         if (handler.getQueue().isEmpty())
         {
-            event.replyError("There is nothing in the queue!");
+            event.replyError("佇列中沒有任何內容！");
             return;
         }
-
 
         User target;
         List<Member> found = FinderUtil.findMembers(event.getArgs(), event.getGuild());
 
         if(found.isEmpty())
         {
-            event.replyError("Unable to find the user!");
+            event.replyError("無法找到該用戶！");
             return;
         }
-        else if(found.size()>1)
+        else if(found.size() > 1)
         {
             OrderedMenu.Builder builder = new OrderedMenu.Builder();
-            for(int i=0; i<found.size() && i<4; i++)
+            for(int i = 0; i < found.size() && i < 4; i++)
             {
                 Member member = found.get(i);
-                builder.addChoice("**"+member.getUser().getName()+"**#"+member.getUser().getDiscriminator());
+                builder.addChoice("**" + member.getUser().getName() + "**#" + member.getUser().getDiscriminator());
             }
 
             builder
-            .setSelection((msg, i) -> removeAllEntries(found.get(i-1).getUser(), event))
-            .setText("Found multiple users:")
-            .setColor(event.getSelfMember().getColor())
-            .useNumbers()
-            .setUsers(event.getAuthor())
-            .useCancelButton(true)
-            .setCancel((msg) -> {})
-            .setEventWaiter(bot.getWaiter())
-            .setTimeout(1, TimeUnit.MINUTES)
-
-            .build().display(event.getChannel());
+                .setSelection((msg, i) -> removeAllEntries(found.get(i - 1).getUser(), event))
+                .setText("找到多位用戶：")
+                .setColor(event.getSelfMember().getColor())
+                .useNumbers()
+                .setUsers(event.getAuthor())
+                .useCancelButton(true)
+                .setCancel((msg) -> {})
+                .setEventWaiter(bot.getWaiter())
+                .setTimeout(1, TimeUnit.MINUTES)
+                .build().display(event.getChannel());
 
             return;
         }
@@ -102,7 +99,6 @@ public class ForceRemoveCmd extends DJCommand
         }
 
         removeAllEntries(target, event);
-
     }
 
     private void removeAllEntries(User target, CommandEvent event)
@@ -110,11 +106,11 @@ public class ForceRemoveCmd extends DJCommand
         int count = ((AudioHandler) event.getGuild().getAudioManager().getSendingHandler()).getQueue().removeAll(target.getIdLong());
         if (count == 0)
         {
-            event.replyWarning("**"+target.getName()+"** doesn't have any songs in the queue!");
+            event.replyWarning("**" + target.getName() + "** 在佇列中沒有任何歌曲！");
         }
         else
         {
-            event.replySuccess("Successfully removed `"+count+"` entries from "+FormatUtil.formatUsername(target)+".");
+            event.replySuccess("成功從 " + FormatUtil.formatUsername(target) + " 中刪除 `" + count + "` 條目。");
         }
     }
 }
