@@ -1,6 +1,7 @@
 <img align="right" src="https://i.imgur.com/zrE80HY.png" height="200" width="200">
 
-# JMusicBot
+# JMusicBot-zh_TW
+使用ChatGPT翻譯過後的音樂機器人。
 
 [![Downloads](https://img.shields.io/github/downloads/jagrosh/MusicBot/total.svg)](https://github.com/jagrosh/MusicBot/releases/latest)
 [![Stars](https://img.shields.io/github/stars/jagrosh/MusicBot.svg)](https://github.com/jagrosh/MusicBot/stargazers)
@@ -11,50 +12,50 @@
 [![Build and Test](https://github.com/jagrosh/MusicBot/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/jagrosh/MusicBot/actions/workflows/build-and-test.yml)
 [![CodeFactor](https://www.codefactor.io/repository/github/jagrosh/musicbot/badge)](https://www.codefactor.io/repository/github/jagrosh/musicbot)
 
-A cross-platform Discord music bot with a clean interface, and that is easy to set up and run yourself!
+一個跨平台的 Discord 音樂機器人，擁有簡潔的介面，並且容易設定與自行運行！
 
 [![Setup](http://i.imgur.com/VvXYp5j.png)](https://jmusicbot.com/setup)
 
-## Features
-  * Easy to run (just make sure Java is installed, and run!)
-  * Fast loading of songs
-  * No external keys needed (besides a Discord Bot token)
-  * Smooth playback
-  * Server-specific setup for the "DJ" role that can moderate the music
-  * Clean and beautiful menus
-  * Supports many sites, including Youtube, Soundcloud, and more
-  * Supports many online radio/streams
-  * Supports local files
-  * Playlist support (both web/youtube, and local)
+## 功能
+  * 簡單運行（只需確保已安裝 Java，然後執行！）
+  * 快速加載歌曲
+  * 不需要額外的密鑰（除了 Discord 機器人代碼）
+  * 平滑的播放體驗
+  * 為 "DJ" 角色提供伺服器特定的設定，可以管理音樂
+  * 簡潔且美觀的菜單
+  * 支援多個網站，包括 YouTube、Soundcloud 等
+  * 支援許多線上電台/串流
+  * 支援本地檔案
+  * 支援播放清單（包括網頁/YouTube 和本地）
 
-## Supported sources and formats
-JMusicBot supports all sources and formats supported by [lavaplayer](https://github.com/sedmelluq/lavaplayer#supported-formats):
-### Sources
+## 支援的來源和格式
+JMusicBot 支援 [lavaplayer](https://github.com/sedmelluq/lavaplayer#supported-formats) 支援的所有來源和格式：
+### 來源
   * YouTube
   * SoundCloud
   * Bandcamp
   * Vimeo
-  * Twitch streams
-  * Local files
+  * Twitch 串流
+  * 本地檔案
   * HTTP URLs
-### Formats
+### 格式
   * MP3
   * FLAC
   * WAV
-  * Matroska/WebM (AAC, Opus or Vorbis codecs)
-  * MP4/M4A (AAC codec)
-  * OGG streams (Opus, Vorbis and FLAC codecs)
-  * AAC streams
-  * Stream playlists (M3U and PLS)
+  * Matroska/WebM（AAC、Opus 或 Vorbis 編解碼）
+  * MP4/M4A（AAC 編解碼）
+  * OGG 串流（Opus、Vorbis 和 FLAC 編解碼）
+  * AAC 串流
+  * 串流播放清單（M3U 和 PLS）
 
-## Example
-![Loading Example...](https://i.imgur.com/kVtTKvS.gif)
+## 範例
+![加載範例...](https://i.imgur.com/kVtTKvS.gif)
 
-## Setup
-Please see the [Setup Page](https://jmusicbot.com/setup) to run this bot yourself!
+## 設定
+請查看 [設定頁面](https://jmusicbot.com/setup) 來自行運行此機器人！
 
-## Questions/Suggestions/Bug Reports
-**Please read the [Issues List](https://github.com/jagrosh/MusicBot/issues) before suggesting a feature**. If you have a question, need troubleshooting help, or want to brainstorm a new feature, please start a [Discussion](https://github.com/jagrosh/MusicBot/discussions). If you'd like to suggest a feature or report a reproducible bug, please open an [Issue](https://github.com/jagrosh/MusicBot/issues) on this repository. If you like this bot, be sure to add a star to the libraries that make this possible: [**JDA**](https://github.com/DV8FromTheWorld/JDA) and [**lavaplayer**](https://github.com/sedmelluq/lavaplayer)!
+## 問題/建議/錯誤回報
+**請在建議功能之前閱讀 [問題列表](https://github.com/jagrosh/MusicBot/issues)**。如果你有問題、需要疑難排解幫助，或想討論新功能，請開始一個 [討論](https://github.com/jagrosh/MusicBot/discussions)。如果你想建議功能或回報可重現的錯誤，請在此儲存庫開啟一個 [問題](https://github.com/jagrosh/MusicBot/issues)。如果你喜歡這個機器人，請記得給使其運行的庫加星： [**JDA**](https://github.com/DV8FromTheWorld/JDA) 和 [**lavaplayer**](https://github.com/sedmelluq/lavaplayer)！
 
-## Editing
-This bot (and the source code here) might not be easy to edit for inexperienced programmers. The main purpose of having the source public is to show the capabilities of the libraries, to allow others to understand how the bot works, and to allow those knowledgeable about java, JDA, and Discord bot development to contribute. There are many requirements and dependencies required to edit and compile it, and there will not be support provided for people looking to make changes on their own. Instead, consider making a feature request (see the above section). If you choose to make edits, please do so in accordance with the Apache 2.0 License.
+## 編輯
+對於沒有經驗的程式設計師來說，這個機器人（以及這裡的原始碼）可能不容易編輯。公開原始碼的主要目的是展示庫的功能，讓他人了解機器人的運作方式，並讓熟悉 Java、JDA 和 Discord 機器人開發的人進行貢獻。編輯和編譯它需要許多需求和依賴項，不會為自行進行更改的人提供支援。相反，請考慮提交功能請求（請參考上述部分）。如果你選擇進行編輯，請根據 Apache 2.0 許可證進行。
