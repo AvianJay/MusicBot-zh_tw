@@ -1,17 +1,15 @@
 /*
  * Copyright 2018 John Grosh <john.a.grosh@gmail.com>.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * 根據 Apache License 2.0 版（以下簡稱「許可證」）授權使用本文件；
+ * 除非遵守許可證，否則您不得使用本文件。
+ * 您可以在以下網址獲取許可證副本：
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 除非適用法律要求或書面同意，根據許可證分發的軟體按「現狀」提供，
+ * 不附帶任何明示或默示的保證或條件。
+ * 請參閱許可證以瞭解具體的許可權和限制。
  */
 package com.jagrosh.jmusicbot.utils;
 
@@ -40,24 +38,24 @@ import org.json.JSONTokener;
  */
 public class OtherUtil
 {
-    public final static String NEW_VERSION_AVAILABLE = "There is a new version of JMusicBot available!\n"
-                    + "Current version: %s\n"
-                    + "New Version: %s\n\n"
-                    + "Please visit https://github.com/jagrosh/MusicBot/releases/latest to get the latest release.";
+    public final static String NEW_VERSION_AVAILABLE = "有新版本的 JMusicBot 可用！\n"
+                    + "當前版本：%s\n"
+                    + "新版本：%s\n\n"
+                    + "請訪問 https://github.com/jagrosh/MusicBot/releases/latest 獲取最新版本。";
     private final static String WINDOWS_INVALID_PATH = "c:\\windows\\system32\\";
     
     /**
-     * gets a Path from a String
-     * also fixes the windows tendency to try to start in system32
-     * any time the bot tries to access this path, it will instead start in the location of the jar file
+     * 根據字串獲取路徑
+     * 同時修正 Windows 嘗試在 system32 中啟動的問題
+     * 每當機器人試圖訪問此路徑時，它將從 jar 文件的位置開始
      * 
-     * @param path the string path
-     * @return the Path object
+     * @param path 字串路徑
+     * @return Path 對象
      */
     public static Path getPath(String path)
     {
         Path result = Paths.get(path);
-        // special logic to prevent trying to access system32
+        // 特殊邏輯以防止嘗試訪問 system32
         if(result.toAbsolutePath().toString().toLowerCase().startsWith(WINDOWS_INVALID_PATH))
         {
             try
@@ -70,11 +68,11 @@ public class OtherUtil
     }
     
     /**
-     * Loads a resource from the jar as a string
+     * 從 jar 中加載資源作為字串
      * 
-     * @param clazz class base object
-     * @param name name of resource
-     * @return string containing the contents of the resource
+     * @param clazz 類基本對象
+     * @param name 資源名稱
+     * @return 包含資源內容的字串
      */
     public static String loadResource(Object clazz, String name)
     {
@@ -91,10 +89,10 @@ public class OtherUtil
     }
     
     /**
-     * Loads image data from a URL
+     * 從 URL 加載圖片數據
      * 
-     * @param url url of image
-     * @return inputstream of url
+     * @param url 圖片的 URL
+     * @return URL 的輸入流
      */
     public static InputStream imageFromUrl(String url)
     {
@@ -112,10 +110,10 @@ public class OtherUtil
     }
     
     /**
-     * Parses an activity from a string
+     * 從字串解析活動
      * 
-     * @param game the game, including the action such as 'playing' or 'watching'
-     * @return the parsed activity
+     * @param game 包含動作的遊戲，例如 'playing' 或 'watching'
+     * @return 解析的活動
      */
     public static Activity parseGame(String game)
     {
@@ -157,21 +155,21 @@ public class OtherUtil
     public static void checkJavaVersion(Prompt prompt)
     {
         if(!System.getProperty("java.vm.name").contains("64"))
-            prompt.alert(Prompt.Level.WARNING, "Java Version", 
-                    "It appears that you may not be using a supported Java version. Please use 64-bit java.");
+            prompt.alert(Prompt.Level.WARNING, "Java 版本", 
+                    "看起來您可能沒有使用受支持的 Java 版本。請使用 64 位 Java。");
     }
     
     public static void checkVersion(Prompt prompt)
     {
-        // Get current version number
+        // 獲取當前版本號
         String version = getCurrentVersion();
         
-        // Check for new version
+        // 檢查新版本
         String latestVersion = getLatestVersion();
         
         if(latestVersion!=null && !latestVersion.equals(version))
         {
-            prompt.alert(Prompt.Level.WARNING, "JMusicBot Version", String.format(NEW_VERSION_AVAILABLE, version, latestVersion));
+            prompt.alert(Prompt.Level.WARNING, "JMusicBot 版本", String.format(NEW_VERSION_AVAILABLE, version, latestVersion));
         }
     }
     
@@ -213,20 +211,19 @@ public class OtherUtil
     }
 
     /**
-     * Checks if the bot JMusicBot is being run on is supported & returns the reason if it is not.
-     * @return A string with the reason, or null if it is supported.
+     * 檢查運行 JMusicBot 的機器人是否受支持，並返回不支持的原因（如果有）。
+     * @return 一個包含原因的字串，如果受支持則返回 null。
      */
     public static String getUnsupportedBotReason(JDA jda) 
     {
         if (jda.getSelfUser().getFlags().contains(User.UserFlag.VERIFIED_BOT))
-            return "The bot is verified. Using JMusicBot in a verified bot is not supported.";
+            return "該機器人已獲得驗證。在驗證機器人上使用 JMusicBot 是不受支持的。";
 
         ApplicationInfo info = jda.retrieveApplicationInfo().complete();
         if (info.isBotPublic())
-            return "\"Public Bot\" is enabled. Using JMusicBot as a public bot is not supported. Please disable it in the "
-                    + "Developer Dashboard at https://discord.com/developers/applications/" + jda.getSelfUser().getId() + "/bot ."
-                    + "You may also need to disable all Installation Contexts at https://discord.com/developers/applications/" 
-                    + jda.getSelfUser().getId() + "/installation .";
+            return "\"公共機器人\" 已啟用。在公共機器人上使用 JMusicBot 是不受支持的。請在開發者儀表板中禁用它，網址為 https://discord.com/developers/applications/" + jda.getSelfUser().getId() + "/bot ."
+                    + "您可能還需要在 https://discord.com/developers/applications/" 
+                    + jda.getSelfUser().getId() + "/installation 禁用所有安裝上下文。";
 
         return null;
     }
