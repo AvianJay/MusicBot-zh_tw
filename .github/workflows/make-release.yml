@@ -64,7 +64,7 @@ jobs:
             ${{ github.event.inputs.info }}
             
             ---
-            ### Setup
+            ### 設定
             https://jmusicbot.com/setup  
             https://jmusicbot.com/config  
-            # Download: [JMusicBot-${{ github.event.inputs.version_number }}.jar](https://github.com/jagrosh/MusicBot/releases/download/${{ github.event.inputs.version_number }}/JMusicBot-${{ github.event.inputs.version_number }}.jar)
+            # 下載: [JMusicBot-${{ github.event.inputs.version_number }}.jar](https://github.com/AvianJay/MusicBot-zh_tw/releases/download/${{ github.event.inputs.version_number }}/JMusicBot-${{ github.event.inputs.version_number }}.jar)
