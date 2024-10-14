@@ -1,17 +1,15 @@
 /*
  * Copyright 2016 John Grosh <john.a.grosh@gmail.com>.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * 根據 Apache License 2.0 版（以下簡稱「許可證」）授權使用本文件；
+ * 除非遵守許可證，否則您不得使用本文件。
+ * 您可以在以下網址獲取許可證副本：
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 除非適用法律要求或書面同意，根據許可證分發的軟體按「現狀」提供，
+ * 不附帶任何明示或默示的保證或條件。
+ * 請參閱許可證以瞭解具體的許可權和限制。
  */
 package com.jagrosh.jmusicbot.commands.owner;
 
@@ -31,11 +29,11 @@ public class AutoplaylistCmd extends OwnerCommand
     public AutoplaylistCmd(Bot bot)
     {
         this.bot = bot;
-        this.guildOnly = true;
-        this.name = "autoplaylist";
-        this.arguments = "<name|NONE>";
-        this.help = "sets the default playlist for the server";
-        this.aliases = bot.getConfig().getAliases(this.name);
+        this.guildOnly = true; // 只能在伺服器中使用
+        this.name = "autoplaylist"; // 指令名稱
+        this.arguments = "<name|NONE>"; // 指令參數
+        this.help = "設置伺服器的預設播放清單"; // 指令說明
+        this.aliases = bot.getConfig().getAliases(this.name); // 別名
     }
 
     @Override
@@ -43,26 +41,26 @@ public class AutoplaylistCmd extends OwnerCommand
     {
         if(event.getArgs().isEmpty())
         {
-            event.reply(event.getClient().getError()+" Please include a playlist name or NONE");
-            return;
+            event.reply(event.getClient().getError() + " 請提供播放清單名稱或 NONE");
+            return; // 如果沒有參數，則提示用戶
         }
         if(event.getArgs().equalsIgnoreCase("none"))
         {
             Settings settings = event.getClient().getSettingsFor(event.getGuild());
-            settings.setDefaultPlaylist(null);
-            event.reply(event.getClient().getSuccess()+" Cleared the default playlist for **"+event.getGuild().getName()+"**");
+            settings.setDefaultPlaylist(null); // 清除預設播放清單
+            event.reply(event.getClient().getSuccess() + " 已清除 **" + event.getGuild().getName() + "** 的預設播放清單");
             return;
         }
-        String pname = event.getArgs().replaceAll("\\s+", "_");
-        if(bot.getPlaylistLoader().getPlaylist(pname)==null)
+        String pname = event.getArgs().replaceAll("\\s+", "_"); // 將空格替換為底線
+        if(bot.getPlaylistLoader().getPlaylist(pname) == null)
         {
-            event.reply(event.getClient().getError()+" Could not find `"+pname+".txt`!");
+            event.reply(event.getClient().getError() + " 找不到 `" + pname + ".txt`！");
         }
         else
         {
             Settings settings = event.getClient().getSettingsFor(event.getGuild());
-            settings.setDefaultPlaylist(pname);
-            event.reply(event.getClient().getSuccess()+" The default playlist for **"+event.getGuild().getName()+"** is now `"+pname+"`");
+            settings.setDefaultPlaylist(pname); // 設置新的預設播放清單
+            event.reply(event.getClient().getSuccess() + " **" + event.getGuild().getName() + "** 的預設播放清單現在是 `" + pname + "`");
         }
     }
 }
