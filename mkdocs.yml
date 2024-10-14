@@ -1,5 +1,5 @@
-site_name: JMusicBot Wiki
-site_description: "🎶 A Discord music bot that’s easy to set up and run yourself!"
+site_name: JMusicBot 維基
+site_description: "🎶 一個 Discord 音樂機器人，您可以輕鬆設定和運行！"
 copyright: Copyright &copy; 2021 jagrosh
 theme:
   icon: 
@@ -19,25 +19,25 @@ theme:
       scheme: default
       toggle:
         icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
+        name: 切換到黑暗模式
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       toggle:
         icon: material/toggle-switch
-        name: Switch to light mode
+        name: 切換到白亮模式
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/jagrosh/MusicBot
+      link: https://github.com/AvianJay/MusicBot-zh_tw
     - icon: fontawesome/brands/discord
       link: https://discord.gg/0p9LSGoRLu6Pet0k
   # analytics:
   #   provider: google
   #   property: G-XXXXXXXXXX
-repo_name: 'jagrosh/MusicBot'
-repo_url: https://github.com/jagrosh/MusicBot
+repo_name: 'AvianJay/MusicBot'
+repo_url: https://github.com/AvianJay/MusicBot
 edit_uri: edit/gh-pages/docs/
-site_url: https://jmusicbot.com
+site_url: https://avianjay.github.io/MusicBot-zh_tw
 markdown_extensions:
   - meta
   - admonition
