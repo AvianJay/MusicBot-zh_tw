@@ -1,17 +1,15 @@
 /*
  * Copyright 2018 John Grosh <john.a.grosh@gmail.com>.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * 根據 Apache License 2.0 版（以下簡稱「許可證」）授權使用本文件；
+ * 除非遵守許可證，否則您不得使用本文件。
+ * 您可以在以下網址獲取許可證副本：
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 除非適用法律要求或書面同意，根據許可證分發的軟體按「現狀」提供，
+ * 不附帶任何明示或默示的保證或條件。
+ * 請參閱許可證以瞭解具體的許可權和限制。
  */
 package com.jagrosh.jmusicbot.settings;
 
@@ -46,10 +44,9 @@ public class SettingsManager implements GuildSettingsManager<Settings>
             loadedSettings.keySet().forEach((id) -> {
                 JSONObject o = loadedSettings.getJSONObject(id);
 
-                // Legacy version support: On versions 0.3.3 and older, the repeat mode was represented as a boolean.
+                // 向後相容：在版本 0.3.3 及更早版本中，重複模式表示為布林值。
                 if (!o.has("repeat_mode") && o.has("repeat") && o.getBoolean("repeat"))
                     o.put("repeat_mode", RepeatMode.ALL);
-
 
                 settings.put(Long.parseLong(id), new Settings(this,
                         o.has("text_channel_id") ? o.getString("text_channel_id")            : null,
@@ -63,26 +60,26 @@ public class SettingsManager implements GuildSettingsManager<Settings>
                         o.has("queue_type")      ? o.getEnum(QueueType.class, "queue_type")  : QueueType.FAIR));
             });
         } catch (NoSuchFileException e) {
-            // create an empty json file
+            // 創建一個空的 json 文件
             try {
-                LOG.info("serversettings.json will be created in " + OtherUtil.getPath("serversettings.json").toAbsolutePath());
+                LOG.info("serversettings.json 將在 " + OtherUtil.getPath("serversettings.json").toAbsolutePath() + " 中創建");
                 Files.write(OtherUtil.getPath("serversettings.json"), new JSONObject().toString(4).getBytes());
             } catch(IOException ex) {
-                LOG.warn("Failed to create new settings file: "+ex);
+                LOG.warn("無法創建新的設定檔： "+ex);
             }
             return;
         } catch(IOException | JSONException e) {
-            LOG.warn("Failed to load server settings: "+e);
+            LOG.warn("無法加載伺服器設定： "+e);
         }
 
-        LOG.info("serversettings.json loaded from " + OtherUtil.getPath("serversettings.json").toAbsolutePath());
+        LOG.info("從 " + OtherUtil.getPath("serversettings.json").toAbsolutePath() + " 加載了 serversettings.json");
     }
 
     /**
-     * Gets non-null settings for a Guild
+     * 獲取公會的非空設定
      *
-     * @param guild the guild to get settings for
-     * @return the existing settings, or new settings for that guild
+     * @param guild 要獲取設定的公會
+     * @return 現有的設定，或該公會的新設定
      */
     @Override
     public Settings getSettings(Guild guild)
@@ -129,7 +126,7 @@ public class SettingsManager implements GuildSettingsManager<Settings>
         try {
             Files.write(OtherUtil.getPath(SETTINGS_FILE), obj.toString(4).getBytes());
         } catch(IOException ex){
-            LOG.warn("Failed to write to file: "+ex);
+            LOG.warn("無法寫入檔案： "+ex);
         }
     }
 }
