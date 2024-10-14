@@ -1,17 +1,15 @@
 /*
- * Copyright 2021 John Grosh <john.a.grosh@gmail.com>.
+ * 版權所有 2021 John Grosh <john.a.grosh@gmail.com>。
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * 根據 Apache 許可證 版本 2.0（以下簡稱“許可證”）授權；
+ * 除非遵守該許可證，否則您不得使用此檔案。
+ * 您可以在以下網址獲取許可證的副本：
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 除非法律要求或書面同意，否則根據許可證分發的軟件是以“原樣”基礎提供的，
+ * 不附有任何明示或隱含的保證或條件。
+ * 有關授權的具體語言以及對於許可證的限制，請參見許可證。
  */
 package com.jagrosh.jmusicbot.audio;
 
@@ -74,15 +72,15 @@ public class TransformativeAudioSourceManager extends YoutubeAudioSourceManager
         }
         catch (PatternSyntaxException ex)
         {
-            log.info(String.format("Invalid pattern syntax '%s' in source '%s'", regex, name));
+            log.info(String.format("來源 '%s' 中的模式語法 '%s' 無效", name, regex));
         }
         catch (IOException ex)
         {
-            log.warn(String.format("Failed to resolve URL in source '%s': ", name), ex);
+            log.warn(String.format("在來源 '%s' 中解析 URL 失敗：", name), ex);
         }
         catch (Exception ex)
         {
-            log.warn(String.format("Exception in source '%s'", name), ex);
+            log.warn(String.format("在來源 '%s' 中發生異常", name), ex);
         }
         return null;
     }
@@ -97,7 +95,7 @@ public class TransformativeAudioSourceManager extends YoutubeAudioSourceManager
         }
         catch (Exception ex)
         {
-            log.warn("Invalid transform ", ex);
+            log.warn("無效的轉換 ", ex);
             return Collections.emptyList();
         }
     }
