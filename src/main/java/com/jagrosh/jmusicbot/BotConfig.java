@@ -34,8 +34,8 @@ public class BotConfig
 {
     private final Prompt prompt;
     private final static String CONTEXT = "Config";
-    private final static String START_TOKEN = "/// JMUSICBOT 設定開始 ///";
-    private final static String END_TOKEN = "/// JMUSICBOT 設定結束 ///";
+    private final static String START_TOKEN = "/// JMUSICBOT 設定 開始 ///";
+    private final static String END_TOKEN = "/// JMUSICBOT 設定 結束 ///";
     
     private Path path = null;
     private String token, prefix, altprefix, helpWord, playlistsFolder, logLevel,
@@ -160,7 +160,7 @@ public class BotConfig
     private void writeToFile()
     {
         byte[] bytes = loadDefaultConfig().replace("BOT_TOKEN_HERE", token)
-                .replace("0 // OWNER ID", Long.toString(owner))
+                .replace("0 // 擁有者 ID", Long.toString(owner))
                 .trim().getBytes();
         try 
         {
@@ -178,7 +178,7 @@ public class BotConfig
     {
         String original = OtherUtil.loadResource(new JMusicBot(), "/reference.conf");
         return original==null 
-                ? "token = BOT_TOKEN_HERE\r\nowner = 0 // OWNER ID" 
+                ? "token = BOT_TOKEN_HERE\r\nowner = 0 // 擁有者 ID" 
                 : original.substring(original.indexOf(START_TOKEN)+START_TOKEN.length(), original.indexOf(END_TOKEN)).trim();
     }
     
