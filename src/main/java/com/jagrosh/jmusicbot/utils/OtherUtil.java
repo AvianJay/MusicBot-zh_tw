@@ -186,7 +186,7 @@ public class OtherUtil
         try
         {
             Response response = new OkHttpClient.Builder().build()
-                    .newCall(new Request.Builder().get().url("https://api.github.com/repos/jagrosh/MusicBot/releases/latest").build())
+                    .newCall(new Request.Builder().get().url("https://api.github.com/repos/AvianJay/MusicBot-zh_tw/releases/latest").build())
                     .execute();
             ResponseBody body = response.body();
             if(body != null)
@@ -214,7 +214,7 @@ public class OtherUtil
      * 檢查運行 JMusicBot 的機器人是否受支持，並返回不支持的原因（如果有）。
      * @return 一個包含原因的字串，如果受支持則返回 null。
      */
-    public static String getUnsupportedBotReason(JDA jda) 
+    /*public static String getUnsupportedBotReason(JDA jda) 
     {
         if (jda.getSelfUser().getFlags().contains(User.UserFlag.VERIFIED_BOT))
             return "該機器人已獲得驗證。在驗證機器人上使用 JMusicBot 是不受支持的。";
@@ -226,5 +226,5 @@ public class OtherUtil
                     + jda.getSelfUser().getId() + "/installation 禁用所有安裝上下文。";
 
         return null;
-    }
+    }*/
 }
