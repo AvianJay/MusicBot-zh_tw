@@ -1,17 +1,15 @@
 /*
  * Copyright 2016 John Grosh <john.a.grosh@gmail.com>.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * 根據 Apache License 2.0 版（以下簡稱「許可證」）授權使用本文件；
+ * 除非遵守許可證，否則您不得使用本文件。
+ * 您可以在以下網址獲取許可證副本：
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 除非適用法律要求或書面同意，根據許可證分發的軟體按「現狀」提供，
+ * 不附帶任何明示或默示的保證或條件。
+ * 請參閱許可證以瞭解具體的許可權和限制。
  */
 package com.jagrosh.jmusicbot.commands.owner;
 
@@ -30,14 +28,15 @@ import com.jagrosh.jmusicbot.playlist.PlaylistLoader.Playlist;
 public class PlaylistCmd extends OwnerCommand 
 {
     private final Bot bot;
+    
     public PlaylistCmd(Bot bot)
     {
         this.bot = bot;
-        this.guildOnly = false;
-        this.name = "playlist";
-        this.arguments = "<append|delete|make|setdefault>";
-        this.help = "playlist management";
-        this.aliases = bot.getConfig().getAliases(this.name);
+        this.guildOnly = false; // 可以在私人頻道使用
+        this.name = "playlist"; // 指令名稱
+        this.arguments = "<append|delete|make|setdefault>"; // 參數
+        this.help = "播放列表管理"; // 指令說明
+        this.aliases = bot.getConfig().getAliases(this.name); // 別名
         this.children = new OwnerCommand[]{
             new ListCmd(),
             new AppendlistCmd(),
@@ -50,7 +49,7 @@ public class PlaylistCmd extends OwnerCommand
     @Override
     public void execute(CommandEvent event) 
     {
-        StringBuilder builder = new StringBuilder(event.getClient().getWarning()+" Playlist Management Commands:\n");
+        StringBuilder builder = new StringBuilder(event.getClient().getWarning()+" 播放列表管理指令：\n");
         for(Command cmd: this.children)
             builder.append("\n`").append(event.getClient().getPrefix()).append(name).append(" ").append(cmd.getName())
                     .append(" ").append(cmd.getArguments()==null ? "" : cmd.getArguments()).append("` - ").append(cmd.getHelp());
@@ -61,36 +60,36 @@ public class PlaylistCmd extends OwnerCommand
     {
         public MakelistCmd()
         {
-            this.name = "make";
-            this.aliases = new String[]{"create"};
-            this.help = "makes a new playlist";
-            this.arguments = "<name>";
-            this.guildOnly = false;
+            this.name = "make"; // 指令名稱
+            this.aliases = new String[]{"create"}; // 別名
+            this.help = "創建新的播放列表"; // 指令說明
+            this.arguments = "<name>"; // 參數
+            this.guildOnly = false; // 可以在私人頻道使用
         }
 
         @Override
         protected void execute(CommandEvent event) 
         {
             String pname = event.getArgs().replaceAll("\\s+", "_");
-            pname = pname.replaceAll("[*?|\\/\":<>]", "");
+            pname = pname.replaceAll("[*?|\\/\":<>]", ""); // 移除無效字符
             if(pname == null || pname.isEmpty()) 
             {
-                event.replyError("Please provide a name for the playlist!");
+                event.replyError("請提供播放列表名稱！");
             } 
             else if(bot.getPlaylistLoader().getPlaylist(pname) == null)
             {
                 try
                 {
-                    bot.getPlaylistLoader().createPlaylist(pname);
-                    event.reply(event.getClient().getSuccess()+" Successfully created playlist `"+pname+"`!");
+                    bot.getPlaylistLoader().createPlaylist(pname); // 創建播放列表
+                    event.reply(event.getClient().getSuccess()+" 成功創建播放列表 `"+pname+"`！");
                 }
                 catch(IOException e)
                 {
-                    event.reply(event.getClient().getError()+" I was unable to create the playlist: "+e.getLocalizedMessage());
+                    event.reply(event.getClient().getError()+" 我無法創建播放列表: "+e.getLocalizedMessage());
                 }
             }
             else
-                event.reply(event.getClient().getError()+" Playlist `"+pname+"` already exists!");
+                event.reply(event.getClient().getError()+" 播放列表 `"+pname+"` 已存在！");
         }
     }
     
@@ -98,11 +97,11 @@ public class PlaylistCmd extends OwnerCommand
     {
         public DeletelistCmd()
         {
-            this.name = "delete";
-            this.aliases = new String[]{"remove"};
-            this.help = "deletes an existing playlist";
-            this.arguments = "<name>";
-            this.guildOnly = false;
+            this.name = "delete"; // 指令名稱
+            this.aliases = new String[]{"remove"}; // 別名
+            this.help = "刪除現有的播放列表"; // 指令說明
+            this.arguments = "<name>"; // 參數
+            this.guildOnly = false; // 可以在私人頻道使用
         }
 
         @Override
@@ -110,17 +109,17 @@ public class PlaylistCmd extends OwnerCommand
         {
             String pname = event.getArgs().replaceAll("\\s+", "_");
             if(bot.getPlaylistLoader().getPlaylist(pname)==null)
-                event.reply(event.getClient().getError()+" Playlist `"+pname+"` doesn't exist!");
+                event.reply(event.getClient().getError()+" 播放列表 `"+pname+"` 不存在！");
             else
             {
                 try
                 {
-                    bot.getPlaylistLoader().deletePlaylist(pname);
-                    event.reply(event.getClient().getSuccess()+" Successfully deleted playlist `"+pname+"`!");
+                    bot.getPlaylistLoader().deletePlaylist(pname); // 刪除播放列表
+                    event.reply(event.getClient().getSuccess()+" 成功刪除播放列表 `"+pname+"`！");
                 }
                 catch(IOException e)
                 {
-                    event.reply(event.getClient().getError()+" I was unable to delete the playlist: "+e.getLocalizedMessage());
+                    event.reply(event.getClient().getError()+" 我無法刪除播放列表: "+e.getLocalizedMessage());
                 }
             }
         }
@@ -130,11 +129,11 @@ public class PlaylistCmd extends OwnerCommand
     {
         public AppendlistCmd()
         {
-            this.name = "append";
-            this.aliases = new String[]{"add"};
-            this.help = "appends songs to an existing playlist";
-            this.arguments = "<name> <URL> | <URL> | ...";
-            this.guildOnly = false;
+            this.name = "append"; // 指令名稱
+            this.aliases = new String[]{"add"}; // 別名
+            this.help = "向現有播放列表添加歌曲"; // 指令說明
+            this.arguments = "<name> <URL> | <URL> | ..."; // 參數
+            this.guildOnly = false; // 可以在私人頻道使用
         }
 
         @Override
@@ -143,13 +142,13 @@ public class PlaylistCmd extends OwnerCommand
             String[] parts = event.getArgs().split("\\s+", 2);
             if(parts.length<2)
             {
-                event.reply(event.getClient().getError()+" Please include a playlist name and URLs to add!");
+                event.reply(event.getClient().getError()+" 請包含播放列表名稱和要添加的 URL！");
                 return;
             }
             String pname = parts[0];
             Playlist playlist = bot.getPlaylistLoader().getPlaylist(pname);
             if(playlist==null)
-                event.reply(event.getClient().getError()+" Playlist `"+pname+"` doesn't exist!");
+                event.reply(event.getClient().getError()+" 播放列表 `"+pname+"` 不存在！");
             else
             {
                 StringBuilder builder = new StringBuilder();
@@ -159,17 +158,17 @@ public class PlaylistCmd extends OwnerCommand
                 {
                     String u = url.trim();
                     if(u.startsWith("<") && u.endsWith(">"))
-                        u = u.substring(1, u.length()-1);
+                        u = u.substring(1, u.length()-1); // 移除尖括號
                     builder.append("\r\n").append(u);
                 }
                 try
                 {
-                    bot.getPlaylistLoader().writePlaylist(pname, builder.toString());
-                    event.reply(event.getClient().getSuccess()+" Successfully added "+urls.length+" items to playlist `"+pname+"`!");
+                    bot.getPlaylistLoader().writePlaylist(pname, builder.toString()); // 將 URL 添加到播放列表
+                    event.reply(event.getClient().getSuccess()+" 成功添加 "+urls.length+" 項到播放列表 `"+pname+"`！");
                 }
                 catch(IOException e)
                 {
-                    event.reply(event.getClient().getError()+" I was unable to append to the playlist: "+e.getLocalizedMessage());
+                    event.reply(event.getClient().getError()+" 我無法追加到播放列表: "+e.getLocalizedMessage());
                 }
             }
         }
@@ -180,10 +179,10 @@ public class PlaylistCmd extends OwnerCommand
         public DefaultlistCmd(Bot bot)
         {
             super(bot);
-            this.name = "setdefault";
-            this.aliases = new String[]{"default"};
-            this.arguments = "<playlistname|NONE>";
-            this.guildOnly = true;
+            this.name = "setdefault"; // 指令名稱
+            this.aliases = new String[]{"default"}; // 別名
+            this.arguments = "<playlistname|NONE>"; // 參數
+            this.guildOnly = true; // 僅限伺服器
         }
     }
     
@@ -191,30 +190,30 @@ public class PlaylistCmd extends OwnerCommand
     {
         public ListCmd()
         {
-            this.name = "all";
-            this.aliases = new String[]{"available","list"};
-            this.help = "lists all available playlists";
-            this.guildOnly = true;
+            this.name = "all"; // 指令名稱
+            this.aliases = new String[]{"available","list"}; // 別名
+            this.help = "列出所有可用的播放列表"; // 指令說明
+            this.guildOnly = true; // 僅限伺服器
         }
 
         @Override
         protected void execute(CommandEvent event) 
         {
             if(!bot.getPlaylistLoader().folderExists())
-                bot.getPlaylistLoader().createFolder();
+                bot.getPlaylistLoader().createFolder(); // 創建播放列表文件夾
             if(!bot.getPlaylistLoader().folderExists())
             {
-                event.reply(event.getClient().getWarning()+" Playlists folder does not exist and could not be created!");
+                event.reply(event.getClient().getWarning()+" 播放列表文件夾不存在且無法創建！");
                 return;
             }
-            List<String> list = bot.getPlaylistLoader().getPlaylistNames();
+            List<String> list = bot.getPlaylistLoader().getPlaylistNames(); // 獲取播放列表名稱
             if(list==null)
-                event.reply(event.getClient().getError()+" Failed to load available playlists!");
+                event.reply(event.getClient().getError()+" 無法加載可用的播放列表！");
             else if(list.isEmpty())
-                event.reply(event.getClient().getWarning()+" There are no playlists in the Playlists folder!");
+                event.reply(event.getClient().getWarning()+" 播放列表文件夾中沒有播放列表！");
             else
             {
-                StringBuilder builder = new StringBuilder(event.getClient().getSuccess()+" Available playlists:\n");
+                StringBuilder builder = new StringBuilder(event.getClient().getSuccess()+" 可用的播放列表：\n");
                 list.forEach(str -> builder.append("`").append(str).append("` "));
                 event.reply(builder.toString());
             }
