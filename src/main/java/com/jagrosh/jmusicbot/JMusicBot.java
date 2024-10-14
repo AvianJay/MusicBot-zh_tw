@@ -166,7 +166,7 @@ public class JMusicBot
     {
         // 實例化 about 命令
         AboutCommand aboutCommand = new AboutCommand(Color.BLUE.brighter(),
-                                "一個 [易於自行托管的音樂機器人！](https://github.com/jagrosh/MusicBot) (v" + OtherUtil.getCurrentVersion() + ")",
+                                "一個 [易於自行托管的音樂機器人！](https://github.com/AvianJay/MusicBot-zh_tw/) (v" + OtherUtil.getCurrentVersion() + ")\n翻譯版本由AvianJay製作 (Powered by ChatGPT)\n原專案位置：[jagrosh/MusicBot](https://github.com/jagrosh/MusicBot)",
                                 new String[]{"高品質音樂播放", "公平排隊技術", "易於自行托管"},
                                 RECOMMENDED_PERMS);
         aboutCommand.setIsAuthor(false);
