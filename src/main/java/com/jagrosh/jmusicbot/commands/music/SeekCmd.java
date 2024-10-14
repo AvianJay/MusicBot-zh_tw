@@ -1,17 +1,15 @@
 /*
  * Copyright 2020 John Grosh <john.a.grosh@gmail.com>.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * 根據 Apache License 2.0 版（以下簡稱「許可證」）授權使用本文件；
+ * 除非遵守許可證，否則您不得使用本文件。
+ * 您可以在以下網址獲取許可證副本：
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 除非適用法律要求或書面同意，根據許可證分發的軟體按「現狀」提供，
+ * 不附帶任何明示或默示的保證或條件。
+ * 請參閱許可證以瞭解具體的許可權和限制。
  */
 package com.jagrosh.jmusicbot.commands.music;
 
@@ -37,60 +35,60 @@ public class SeekCmd extends MusicCommand
     public SeekCmd(Bot bot)
     {
         super(bot);
-        this.name = "seek";
-        this.help = "seeks the current song";
-        this.arguments = "[+ | -] <HH:MM:SS | MM:SS | SS>|<0h0m0s | 0m0s | 0s>";
-        this.aliases = bot.getConfig().getAliases(this.name);
-        this.beListening = true;
-        this.bePlaying = true;
+        this.name = "seek"; // 指令名稱
+        this.help = "調整當前播放歌曲的進度"; // 指令說明
+        this.arguments = "[+ | -] <HH:MM:SS | MM:SS | SS>|<0h0m0s | 0m0s | 0s>"; // 參數格式
+        this.aliases = bot.getConfig().getAliases(this.name); // 別名
+        this.beListening = true; // 需要正在收聽
+        this.bePlaying = true; // 需要正在播放音樂
     }
 
     @Override
     public void doCommand(CommandEvent event)
     {
-        AudioHandler handler = (AudioHandler) event.getGuild().getAudioManager().getSendingHandler();
-        AudioTrack playingTrack = handler.getPlayer().getPlayingTrack();
-        if (!playingTrack.isSeekable())
+        AudioHandler handler = (AudioHandler) event.getGuild().getAudioManager().getSendingHandler(); // 獲取音訊處理器
+        AudioTrack playingTrack = handler.getPlayer().getPlayingTrack(); // 獲取正在播放的曲目
+        if (!playingTrack.isSeekable()) // 檢查曲目是否可調整進度
         {
-            event.replyError("This track is not seekable.");
+            event.replyError("此曲目無法調整進度。");
             return;
         }
 
-
+        // 檢查用戶是否有權調整此曲目的進度
         if (!DJCommand.checkDJPermission(event) && playingTrack.getUserData(RequestMetadata.class).getOwner() != event.getAuthor().getIdLong())
         {
-            event.replyError("You cannot seek **" + playingTrack.getInfo().title + "** because you didn't add it!");
+            event.replyError("你無法調整 **" + playingTrack.getInfo().title + "** 的進度，因為不是你添加的！");
             return;
         }
 
-        String args = event.getArgs();
-        TimeUtil.SeekTime seekTime = TimeUtil.parseTime(args);
-        if (seekTime == null)
+        String args = event.getArgs(); // 獲取參數
+        TimeUtil.SeekTime seekTime = TimeUtil.parseTime(args); // 解析時間格式
+        if (seekTime == null) // 如果格式無效
         {
-            event.replyError("Invalid seek! Expected format: " + arguments + "\nExamples: `1:02:23` `+1:10` `-90`, `1h10m`, `+90s`");
+            event.replyError("無效的調整進度！預期格式：" + arguments + "\n範例：`1:02:23` `+1:10` `-90`, `1h10m`, `+90s`");
             return;
         }
 
-        long currentPosition = playingTrack.getPosition();
-        long trackDuration = playingTrack.getDuration();
+        long currentPosition = playingTrack.getPosition(); // 獲取當前播放位置
+        long trackDuration = playingTrack.getDuration(); // 獲取曲目總時長
 
-        long seekMilliseconds = seekTime.relative ? currentPosition + seekTime.milliseconds : seekTime.milliseconds;
-        if (seekMilliseconds > trackDuration)
+        long seekMilliseconds = seekTime.relative ? currentPosition + seekTime.milliseconds : seekTime.milliseconds; // 計算調整後的位置
+        if (seekMilliseconds > trackDuration) // 檢查是否超過曲目時長
         {
-            event.replyError("Cannot seek to `" + TimeUtil.formatTime(seekMilliseconds) + "` because the current track is `" + TimeUtil.formatTime(trackDuration) + "` long!");
+            event.replyError("無法調整至 `" + TimeUtil.formatTime(seekMilliseconds) + "`，因為當前曲目的長度為 `" + TimeUtil.formatTime(trackDuration) + "`！");
             return;
         }
         
         try
         {
-            playingTrack.setPosition(seekMilliseconds);
+            playingTrack.setPosition(seekMilliseconds); // 調整曲目位置
         }
         catch (Exception e)
         {
-            event.replyError("An error occurred while trying to seek: " + e.getMessage());
-            LOG.warn("Failed to seek track " + playingTrack.getIdentifier(), e);
+            event.replyError("調整進度時發生錯誤：" + e.getMessage());
+            LOG.warn("無法調整曲目 " + playingTrack.getIdentifier(), e);
             return;
         }
-        event.replySuccess("Successfully seeked to `" + TimeUtil.formatTime(playingTrack.getPosition()) + "/" + TimeUtil.formatTime(playingTrack.getDuration()) + "`!");
+        event.replySuccess("成功調整至 `" + TimeUtil.formatTime(playingTrack.getPosition()) + "/" + TimeUtil.formatTime(playingTrack.getDuration()) + "`！");
     }
 }
