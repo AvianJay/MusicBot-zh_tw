@@ -1,17 +1,15 @@
 /*
  * Copyright 2018 John Grosh <john.a.grosh@gmail.com>.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * 根據 Apache License 2.0 版（以下簡稱「許可證」）授權使用本文件；
+ * 除非遵守許可證，否則您不得使用本文件。
+ * 您可以在以下網址獲取許可證副本：
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 除非適用法律要求或書面同意，根據許可證分發的軟體按「現狀」提供，
+ * 不附帶任何明示或默示的保證或條件。
+ * 請參閱許可證以瞭解具體的許可權和限制。
  */
 package com.jagrosh.jmusicbot.commands.owner;
 
@@ -28,11 +26,11 @@ public class SetnameCmd extends OwnerCommand
 {
     public SetnameCmd(Bot bot)
     {
-        this.name = "setname";
-        this.help = "sets the name of the bot";
-        this.arguments = "<name>";
-        this.aliases = bot.getConfig().getAliases(this.name);
-        this.guildOnly = false;
+        this.name = "setname"; // 指令名稱
+        this.help = "設置機器人的名稱"; // 指令說明
+        this.arguments = "<name>"; // 參數
+        this.aliases = bot.getConfig().getAliases(this.name); // 別名
+        this.guildOnly = false; // 可以在私人頻道使用
     }
     
     @Override
@@ -40,17 +38,17 @@ public class SetnameCmd extends OwnerCommand
     {
         try 
         {
-            String oldname = event.getSelfUser().getName();
-            event.getSelfUser().getManager().setName(event.getArgs()).complete(false);
-            event.reply(event.getClient().getSuccess()+" Name changed from `"+oldname+"` to `"+event.getArgs()+"`");
+            String oldname = event.getSelfUser().getName(); // 獲取舊名稱
+            event.getSelfUser().getManager().setName(event.getArgs()).complete(false); // 設置新名稱
+            event.reply(event.getClient().getSuccess()+" 名稱已從 `"+oldname+"` 更改為 `"+event.getArgs()+"`");
         } 
         catch(RateLimitedException e) 
         {
-            event.reply(event.getClient().getError()+" Name can only be changed twice per hour!");
+            event.reply(event.getClient().getError()+" 名稱每小時只能更改兩次！");
         }
         catch(Exception e) 
         {
-            event.reply(event.getClient().getError()+" That name is not valid!");
+            event.reply(event.getClient().getError()+" 該名稱無效！");
         }
     }
 }
