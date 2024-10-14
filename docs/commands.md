@@ -1,177 +1,181 @@
 ---
-title: Commands
-description: "Full command reference for JMusicBot"
+title: 指令
+description: "JMusicBot 的完整指令參考"
 ---
 
-This page contains the full list of commands. These commands (and descriptions) can also be seen via the `help` command.
+此頁面包含所有指令的完整列表。這些指令（及其描述）也可以透過 `help` 指令查看。
 
 !!! tip
-    Arguments surrounded by `<>` are required, and arguments surrounded by `[]` are optional. Do not include `<>` nor `[]` when running commands!
+    使用 `<>` 括起來的參數是必需的，而使用 `[]` 括起來的參數是可選的。執行指令時不要包含 `<>` 或 `[]`！
 
 
-## 📜 General Commands
-These commands are just general-use commands to see information about the bot
+## 📜 一般指令
+這些是一般用途的指令，用於查看有關機器人的資訊
 
 ### `about`
-Shows basic information about the bot, including its library, framework, and some statistics
+顯示有關機器人的基本資訊，包括其程式庫、框架和一些統計數據
 
 ### `ping`
-Shows the latency between the bot and Discord. In general, 80-250ms is a normal value.
+顯示機器人與 Discord 之間的延遲。一般來說，80-250ms 是正常值。
 
 ### `settings`
-Shows the settings for the current server. This includes Text Channel, Voice Channel, DJ Role, and Default Playlist. This command also shows the number of servers the bot is on, and how many audio connections there currently are.
+顯示當前伺服器的設定。包括文字頻道、語音頻道、DJ 身分組和預設播放清單。此指令也顯示機器人在多少伺服器上以及當前有多少音頻連接。
 
 
-## 📜 Music Commands
-These commands are related to playing music, available to all users. If a TextChannel is set, these commands can only be used in that channel. 
+## 📜 音樂指令
+這些指令與播放音樂有關，所有使用者皆可使用。如果已設定文字頻道，這些指令只能在該頻道中使用。
 
-### `lyrics [song name]`
-Fetches the lyrics for the provided song name, or the currently-playing song if no name is provided
+### `lyrics [歌曲名稱]`
+取得指定歌曲的歌詞，若未提供名稱則顯示當前播放歌曲的歌詞
 
-### `nowplaying` (or `np` or `current`)
-Shows information about the song that is currently playing (name, user that added it, current timestamp, and song URL)
+### `nowplaying` (或 `np` 或 `current`)
+顯示當前播放歌曲的資訊（名稱、添加者、當前時間戳和歌曲 URL）
 
 ### `play`
-Shows the play commands. If the player is paused, it resumes the player.
+顯示播放指令。如果播放器已暫停，則恢復播放。
 
 ### `play <URL>`
-Plays the song or stream at the provided URL. Supported locations include (but are not limited to): YouTube (and playlists), SoundCloud, BandCamp, Vimeo, and Twitch. Local files or URLs of the following formats are also supported: MP3, FLAC, WAV, Matroska/WebM (AAC, Opus or Vorbis codecs), MP4/M4A (AAC codec), OGG streams (Opus, Vorbis and FLAC codecs), AAC streams, Stream playlists (M3U and PLS)
+播放指定 URL 的歌曲或串流。支援的來源包括（但不限於）：YouTube（及播放清單）、SoundCloud、BandCamp、Vimeo 和 Twitch。也支援本地文件或以下格式的 URL：MP3、FLAC、WAV、Matroska/WebM（AAC、Opus 或 Vorbis 編解碼器）、MP4/M4A（AAC 編解碼器）、OGG 串流（Opus、Vorbis 和 FLAC 編解碼器）、AAC 串流、播放清單（M3U 和 PLS）
 
-### `play <song name>`
-Plays the top YouTube result for the specified song name
+### `play <歌曲名稱>`
+播放指定歌曲名稱的 YouTube 首個搜索結果
 
-### `play playlist <playlistname>` (or `play pl <playlistname>`)
-Plays all songs in the specified playlist. There must already be a playlist of the specified name in the Playlists folder
+### `play playlist <播放清單名稱>` (或 `play pl <播放清單名稱>`)
+播放指定播放清單中的所有歌曲。該名稱的播放清單必須已存在於 Playlists 文件夾中
 
 ### `playlists`
-Shows available playlists. These playlists must be inside the Playlists folder.
+顯示可用的播放清單。這些播放清單必須位於 Playlists 文件夾中。
 
-### `queue [pagenum]` (or `list [pagenum]`) 
-Shows songs in the queue. If no page number is provided, it defaults to the first page.
+### `queue [頁碼]` (或 `list [頁碼]`)
+顯示佇列中的歌曲。如果未提供頁碼，則預設為第一頁。
 
-### `remove <songnum>` (or `delete <songnum>`)
-Removes the song at the provided position in the queue. You can only remove songs that you added, unless you are an Admin or have the specified DJ role.
+### `remove <歌曲編號>` (或 `delete <歌曲編號>`)
+移除佇列中指定位置的歌曲。您只能移除自己添加的歌曲，除非您是管理員或擁有指定的 DJ 身分組。
 
-### `remove all` (or `delete all`)
-Removes all songs that you have added to the queue
+### `remove all` (或 `delete all`)
+移除您添加到佇列中的所有歌曲
 
-### `search <query>` (or `ytsearch <query>`)
-Shows the top YouTube results for a search and allows you to select one to add to the queue
+### `search <查詢>` (或 `ytsearch <查詢>`)
+顯示 YouTube 的搜索結果並允許您選擇添加至佇列
 
-### `scsearch <query>`
-Shows the top SoundCloud results for a search and allows you to select one to add to the queue
+### `scsearch <查詢>`
+顯示 SoundCloud 的搜索結果並允許您選擇添加至佇列
 
 ### `seek [+ | -] <HH:MM:SS | MM:SS | SS>|<0h0m0s | 0m0s | 0s>`
-Seeks within the current song. Use `+` and `-` to seek forward or backward, or an exact timestamp can be used.
+在當前歌曲中進行快進或快退。使用 `+` 和 `-` 快進或快退，或直接使用具體的時間戳。
 
 ### `shuffle`
-Shuffles (changes the order, randomly) of songs that you have added to the queue
+隨機打亂您已添加到佇列中的歌曲順序
 
-### `skip` (or `voteskip`)
-Skips a song if you added it. If you didn't add it, it adds your vote to skip it. Approximately 60% of active listeners need to vote to skip a song for it to be skipped.
+### `skip` (或 `voteskip`)
+跳過您添加的歌曲。如果您未添加該歌曲，則添加跳過該歌曲的投票。約 60% 的活躍聽眾需要投票才能跳過歌曲。
 
 
-## 📜 DJ Commands
-All Admins can automatically use DJ commands. Admins can also assign one server role to be the "DJ role," which allows anyone with that role to use these commands as well.
+## 📜 DJ 指令
+所有管理員都能自動使用 DJ 指令。管理員還可以分配一個伺服器角色作為 "DJ 身分組"，具有該角色的使用者也可以使用這些指令。
 
-### `forceremove <user>` (or `forcedelete <user>` or `modremove <user>` or `moddelete <user>`)
-Forcibly removes all songs that were added by the specified user
+### `forceremove <使用者>` (或 `forcedelete <使用者>` 或 `modremove <使用者>` 或 `moddelete <使用者>`)
+強制移除指定使用者添加的所有歌曲
 
-### `forceskip` (or `modskip`)
-Forcibly skips the current song, regardless of who added it and how many votes there are to skip it
+### `forceskip` (或 `modskip`)
+強制跳過當前歌曲，無論誰添加或有多少票數跳過
 
-### `movetrack <from> <to>` (or `move <from> <to>`)
-Moves the track at position <from> in the queue to position <to>
+### `movetrack <from> <to>` (或 `move <from> <to>`)
+將佇列中位置 <from> 的歌曲移動到位置 <to>
 
 ### `pause`
-Pauses the player. The player remains paused until a DJ or Admin uses the `play` command
+暫停播放器。直到 DJ 或管理員使用 `play` 指令，播放器才會繼續播放
 
-### `playnext <song name | URL>`
-Places a single song at the front of the queue to play next (or begins playing if nothing is currently playing)
+### `playnext <歌曲名稱 | URL>`
+將單曲放置在佇列的最前方，作為下一首播放（如果當前沒有播放任何內容，則立即播放）
 
 ### `repeat [on | off]`
-Puts the player in (or takes it out of) repeat mode. In repeat mode, when songs end naturally (not removed or skipped), they get put back into the queue.
+將播放器設置為重複模式。在重複模式中，當歌曲自然結束時（未移除或跳過），它們將重新添加到佇列中。
 
-### `skipto <position>`
-Skips forward in the queue to the provided song number, playing that song and removing any songs before that from the queue
+### `skipto <位置>`
+跳過佇列中的歌曲，直接播放指定的歌曲，並移除之前的所有歌曲
 
 ### `stop`
-Clears the queue, ends the current song, and leaves the voice channel
+清空佇列，結束當前播放的歌曲並離開語音頻道
 
-### `volume [0-150]` (or `vol [0-150]`)
-Shows or sets the current volume. For best performance, it is recommended to leave this at 100 and adjust volume on an individual basis within Discord
+### `volume [0-150]` (或 `vol [0-150]`)
+顯示或設置當前音量。為了獲得最佳效能，建議將此設置為 100，並在 Discord 中單獨調整音量
 
-## 📜 Admin Commands
-Admin commands can be used by anyone with the Manage Server permission.
 
-### `prefix <prefix>`
-Sets the server-specific prefix
+## 📜 管理員指令
+管理員指令可由任何具有管理伺服器權限的使用者使用。
+
+### `prefix <前綴>`
+設置伺服器專屬前綴
 
 ### `prefix none`
-Clears the server-specific prefix
+清除伺服器專屬前綴
 
 ### `queuetype [linear | fair]`
-Sets the type of queue
+設置佇列類型
 
-### `setdj <rolename>`
-Sets the DJ role. Users with this role will be able to use DJ commands.
+### `setdj <角色名稱>`
+設置 DJ 身分組。擁有該角色的使用者將能夠使用 DJ 指令。
 
 ### `setdj none`
-Clears the DJ role. Only Admins will be able to use the DJ commands.
+清除 DJ 身分組。只有管理員可以使用 DJ 指令。
 
 ### `setskip <0 - 100>`
-Sets the server-specific skip ratio (the percentage of listeners that must vote to skip a song)
+設置伺服器專屬的跳過比例（需要投票跳過歌曲的聽眾百分比）
 
-### `settc <channel>`
-Sets the text channel for music commands. Using music commands in other channels will result in them being deleted (if possible), and a warning sent via DMs to use the correct channel. Additionally, if the bot has the Manage Channel permission in the set channel, it will adjust the topic to show the current track.
+### `settc <頻道>`
+設置音樂指令的文字頻道。在其他頻道中使用音樂指令將被刪除（如果可能的話），並透過私訊發送警告，告知使用者使用正確頻道。此外，如果機器人在設置的頻道中具有管理頻道的權限，它將調整頻道主題以顯示當前播放的歌曲。
 
 ### `settc none`
-Clears the text channel
+清除文字頻道
 
-### `setvc <channel>`
-Sets the voice channel for playing music. When set, the bot will only connect to the specified channel when users attempt to play music.
+### `setvc <頻道>`
+設置播放音樂的語音頻道。設置後，只有在使用者嘗試播放音樂時，機器人才會連接到指定頻道。
 
 ### `setvc none`
-Clears the voice channel for playing music. This means that users can play music from any channel that the bot can connect to (if the bot is not already in a different channel)
+清除播放音樂的語音頻道。這意味著使用者可以從機器人能連接到的任何頻道播放音樂（如果機器人當前未連接到其他頻道）
 
-## 📜 Owner Commands
-These commands can only be used by the bot owner (set in the config)
 
-### `autoplaylist <playlistname>`
-Sets the default playlist for the server, which plays when the queue is empty and when the bot starts up (identical to `playlist setdefault`)
+## 📜 擁有者指令
+這些指令只能由機器人擁有者使用（在配置文件中設置）
+
+### `autoplaylist <播放清單名稱>`
+設置伺服器的預設播放清單，當佇列為空且機器人啟動時播放此播放清單（與 `playlist setdefault` 相同）
 
 ### `debug`
-Generates a file containing debug information
+生成包含調試資訊的文件
 
-### `playlist append <playlistname> <item> | [item] | [item]...`
-Adds items to an existing playlist. Items must be urls. To add a YouTube search, it must be in the form "ytsearch:query". For a SoundCloud search, use "scsearch:query".
+### `playlist append <播放清單名稱> <項目> | [項目] | [項目]...`
+向現有播放清單中添加項目。項目必須是 URL。要添加 YouTube 搜索，必須使用 "ytsearch:query" 的格式。對於 SoundCloud 搜索，使用 "scsearch:query"。
 
-### `playlist delete <playlistname>`
-Deletes the playlist file for a playlist
+### `playlist delete <播放清單名稱>`
+刪除播放清單文件
 
-### `playlist make <playlistname>`
-Creates a new, empty playlist
+### `playlist make <播放清單名稱>`
+創建新的空白播放清單
 
-### `playlist setdefault <playlistname>`
-Sets the default playlist for the server, which plays when the queue is empty and when the bot starts up
+### `playlist setdefault <播放清單名稱>`
+設置伺服器的預設播放清單，當佇列為空且機器人啟動時播放此播放清單
 
 ### `playlist setdefault none`
-Clears the default playlist
+清除預設播放清單
 
 ### `setavatar <url>`
-Sets the avatar of the bot
+設置機器人的
 
-### `setgame [game]`
-Sets the game the bot is playing
+頭像
 
-### `setgame stream <username> <game name>`
-Sets the game the bot is "streaming"
+### `setgame [遊戲]`
+設置機器人正在玩的遊戲
 
-### `setname <name>`
-Sets the username of the bot
+### `setgame stream <用戶名> <遊戲名稱>`
+設置機器人正在 "串流" 的遊戲
 
-### `setstatus <status>`
-Sets the status of the bot (online, idle, dnd, invisible)
+### `setname <名稱>`
+設置機器人的使用者名稱
+
+### `setstatus <狀態>`
+設置機器人的狀態（在線、閒置、勿擾、隱形）
 
 ### `shutdown`
-Safely shuts down
+安全關閉
