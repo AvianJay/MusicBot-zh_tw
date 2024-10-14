@@ -35,8 +35,8 @@ public class LyricsCmd extends MusicCommand
     {
         super(bot);
         this.name = "lyrics";
-        this.arguments = "[song name]";
-        this.help = "shows the lyrics of a song";
+        this.arguments = "[歌曲名稱]";
+        this.help = "顯示歌曲的歌詞";
         this.aliases = bot.getConfig().getAliases(this.name);
         this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS};
     }
@@ -52,7 +52,7 @@ public class LyricsCmd extends MusicCommand
                 title = sendingHandler.getPlayer().getPlayingTrack().getInfo().title;
             else
             {
-                event.replyError("There must be music playing to use that!");
+                event.replyError("必須正在播放音樂才能使用此指令！");
                 return;
             }
         }
@@ -63,7 +63,7 @@ public class LyricsCmd extends MusicCommand
         {
             if(lyrics == null)
             {
-                event.replyError("Lyrics for `" + title + "` could not be found!" + (event.getArgs().isEmpty() ? " Try entering the song name manually (`lyrics [song name]`)" : ""));
+                event.replyError("找不到 `" + title + "` 的歌詞！" + (event.getArgs().isEmpty() ? " 嘗試手動輸入歌曲名稱 (`lyrics [歌曲名稱]`)" : ""));
                 return;
             }
 
@@ -73,7 +73,7 @@ public class LyricsCmd extends MusicCommand
                     .setTitle(lyrics.getTitle(), lyrics.getURL());
             if(lyrics.getContent().length()>15000)
             {
-                event.replyWarning("Lyrics for `" + title + "` found but likely not correct: " + lyrics.getURL());
+                event.replyWarning("找到了 `" + title + "` 的歌詞，但可能不正確: " + lyrics.getURL());
             }
             else if(lyrics.getContent().length()>2000)
             {
