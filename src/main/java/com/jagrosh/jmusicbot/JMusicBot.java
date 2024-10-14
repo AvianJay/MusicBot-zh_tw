@@ -52,7 +52,7 @@ public class JMusicBot
     public final static GatewayIntent[] INTENTS = {GatewayIntent.DIRECT_MESSAGES, GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MESSAGE_REACTIONS, GatewayIntent.GUILD_VOICE_STATES};
     
     /**
-     * @param args the command line arguments
+     * @param args 命令行參數
      */
     public static void main(String[] args)
     {
@@ -69,25 +69,25 @@ public class JMusicBot
     
     private static void startBot()
     {
-        // create prompt to handle startup
+        // 創建提示以處理啟動
         Prompt prompt = new Prompt("JMusicBot");
         
-        // startup checks
+        // 啟動檢查
         OtherUtil.checkVersion(prompt);
         OtherUtil.checkJavaVersion(prompt);
         
-        // load config
+        // 載入配置
         BotConfig config = new BotConfig(prompt);
         config.load();
         if(!config.isValid())
             return;
-        LOG.info("Loaded config from " + config.getConfigLocation());
+        LOG.info("從 " + config.getConfigLocation() + " 載入配置");
 
-        // set log level from config
+        // 根據配置設置日誌級別
         ((ch.qos.logback.classic.Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME)).setLevel(
                 Level.toLevel(config.getLogLevel(), Level.INFO));
         
-        // set up the listener
+        // 設置監聽器
         EventWaiter waiter = new EventWaiter();
         SettingsManager settings = new SettingsManager();
         Bot bot = new Bot(waiter, config, settings);
@@ -102,23 +102,21 @@ public class JMusicBot
                 bot.setGUI(gui);
                 gui.init();
 
-                LOG.info("Loaded config from " + config.getConfigLocation());
+                LOG.info("從 " + config.getConfigLocation() + " 載入配置");
             }
             catch(Exception e)
             {
-                LOG.error("Could not start GUI. If you are "
-                        + "running on a server or in a location where you cannot display a "
-                        + "window, please run in nogui mode using the -Dnogui=true flag.");
+                LOG.error("無法啟動 GUI。如果您在伺服器上運行或在無法顯示窗口的地方，請使用 -Dnogui=true 標誌以無 GUI 模式運行。");
             }
         }
         
-        // attempt to log in and start
+        // 嘗試登錄並啟動
         try
         {
             JDA jda = JDABuilder.create(config.getToken(), Arrays.asList(INTENTS))
                     .enableCache(CacheFlag.MEMBER_OVERRIDES, CacheFlag.VOICE_STATE)
                     .disableCache(CacheFlag.ACTIVITY, CacheFlag.CLIENT_STATUS, CacheFlag.EMOTE, CacheFlag.ONLINE_STATUS)
-                    .setActivity(config.isGameNone() ? null : Activity.playing("loading..."))
+                    .setActivity(config.isGameNone() ? null : Activity.playing("載入中..."))
                     .setStatus(config.getStatus()==OnlineStatus.INVISIBLE || config.getStatus()==OnlineStatus.OFFLINE 
                             ? OnlineStatus.INVISIBLE : OnlineStatus.DO_NOT_DISTURB)
                     .addEventListeners(client, waiter, new Listener(bot))
@@ -126,58 +124,55 @@ public class JMusicBot
                     .build();
             bot.setJDA(jda);
 
-            // check if something about the current startup is not supported
+            // 檢查當前啟動是否不受支持
             String unsupportedReason = OtherUtil.getUnsupportedBotReason(jda);
             if (unsupportedReason != null)
             {
-                prompt.alert(Prompt.Level.ERROR, "JMusicBot", "JMusicBot cannot be run on this Discord bot: " + unsupportedReason);
-                try{ Thread.sleep(5000);}catch(InterruptedException ignored){} // this is awful but until we have a better way...
+                prompt.alert(Prompt.Level.ERROR, "JMusicBot", "JMusicBot 無法在此 Discord 機器人上運行: " + unsupportedReason);
+                try{ Thread.sleep(5000);}catch(InterruptedException ignored){} // 這很糟糕，但直到我們有更好的方法...
                 jda.shutdown();
                 System.exit(1);
             }
             
-            // other check that will just be a warning now but may be required in the future
-            // check if the user has changed the prefix and provide info about the 
-            // message content intent
+            // 其他檢查，現在只是警告，但將來可能會需要
+            // 檢查用戶是否已更改前綴並提供有關
+            // 消息內容意圖的信息
             if(!"@mention".equals(config.getPrefix()))
             {
-                LOG.info("JMusicBot", "You currently have a custom prefix set. "
-                        + "If your prefix is not working, make sure that the 'MESSAGE CONTENT INTENT' is Enabled "
-                        + "on https://discord.com/developers/applications/" + jda.getSelfUser().getId() + "/bot");
+                LOG.info("JMusicBot", "您當前已設置自定義前綴。"
+                        + "如果您的前綴無效，請確保在 https://discord.com/developers/applications/" + jda.getSelfUser().getId() + "/bot 上啟用 '消息內容意圖'。");
             }
         }
         catch (LoginException ex)
         {
-            prompt.alert(Prompt.Level.ERROR, "JMusicBot", ex + "\nPlease make sure you are "
-                    + "editing the correct config.txt file, and that you have used the "
-                    + "correct token (not the 'secret'!)\nConfig Location: " + config.getConfigLocation());
+            prompt.alert(Prompt.Level.ERROR, "JMusicBot", ex + "\n請確保您正在編輯正確的 config.txt 文件，並且您使用了"
+                    + "正確的令牌（而不是 'secret'！）\n配置位置: " + config.getConfigLocation());
             System.exit(1);
         }
         catch(IllegalArgumentException ex)
         {
-            prompt.alert(Prompt.Level.ERROR, "JMusicBot", "Some aspect of the configuration is "
-                    + "invalid: " + ex + "\nConfig Location: " + config.getConfigLocation());
+            prompt.alert(Prompt.Level.ERROR, "JMusicBot", "配置的某個方面無效: "
+                    + ex + "\n配置位置: " + config.getConfigLocation());
             System.exit(1);
         }
         catch(ErrorResponseException ex)
         {
-            prompt.alert(Prompt.Level.ERROR, "JMusicBot", ex + "\nInvalid reponse returned when "
-                    + "attempting to connect, please make sure you're connected to the internet");
+            prompt.alert(Prompt.Level.ERROR, "JMusicBot", ex + "\n嘗試連接時返回無效響應，請確保您已連接到互聯網");
             System.exit(1);
         }
     }
     
     private static CommandClient createCommandClient(BotConfig config, SettingsManager settings, Bot bot)
     {
-        // instantiate about command
+        // 實例化 about 命令
         AboutCommand aboutCommand = new AboutCommand(Color.BLUE.brighter(),
-                                "a music bot that is [easy to host yourself!](https://github.com/jagrosh/MusicBot) (v" + OtherUtil.getCurrentVersion() + ")",
-                                new String[]{"High-quality music playback", "FairQueue™ Technology", "Easy to host yourself"},
+                                "一個 [易於自行托管的音樂機器人！](https://github.com/jagrosh/MusicBot) (v" + OtherUtil.getCurrentVersion() + ")",
+                                new String[]{"高品質音樂播放", "公平排隊技術", "易於自行托管"},
                                 RECOMMENDED_PERMS);
         aboutCommand.setIsAuthor(false);
         aboutCommand.setReplacementCharacter("\uD83C\uDFB6"); // 🎶
         
-        // set up the command client
+        // 設置命令客戶端
         CommandClientBuilder cb = new CommandClientBuilder()
                 .setPrefix(config.getPrefix())
                 .setAlternativePrefix(config.getAltPrefix())
@@ -229,15 +224,15 @@ public class JMusicBot
                         new ShutdownCmd(bot)
                 );
         
-        // enable eval if applicable
+        // 如果適用，啟用評估
         if(config.useEval())
             cb.addCommand(new EvalCmd(bot));
         
-        // set status if set in config
+        // 如果在配置中設置狀態
         if(config.getStatus() != OnlineStatus.UNKNOWN)
             cb.setStatus(config.getStatus());
         
-        // set game
+        // 設置遊戲
         if(config.getGame() == null)
             cb.useDefaultGame();
         else if(config.isGameNone())
