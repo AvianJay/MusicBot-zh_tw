@@ -64,7 +64,7 @@ public class PlayerManager extends DefaultAudioPlayerManager
 
         AudioSourceManagers.registerLocalSource(this);
 
-        DuncteBotSources.registerAll(this, "en-US");
+        DuncteBotSources.registerAll(this, "zh-TW");
     }
     
     public Bot getBot()
