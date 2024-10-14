@@ -1,17 +1,15 @@
 /*
- * Copyright 2018 John Grosh <john.a.grosh@gmail.com>.
+ * 版權所有 2018 John Grosh <john.a.grosh@gmail.com>.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * 根據 Apache License 2.0 版（以下簡稱「許可證」）授權使用本文件；
+ * 除非遵守許可證，否則您不得使用本文件。
+ * 您可以在以下網址獲取許可證副本：
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 除非適用法律要求或書面同意，根據許可證分發的軟體按「現狀」提供，
+ * 不附帶任何明示或默示的保證或條件。
+ * 請參閱許可證以瞭解具體的許可權和限制。
  */
 package com.jagrosh.jmusicbot.commands.music;
 
@@ -29,34 +27,43 @@ public class PlaylistsCmd extends MusicCommand
     public PlaylistsCmd(Bot bot)
     {
         super(bot);
-        this.name = "playlists";
-        this.help = "shows the available playlists";
-        this.aliases = bot.getConfig().getAliases(this.name);
-        this.guildOnly = true;
-        this.beListening = false;
-        this.beListening = false;
+        this.name = "playlists"; // 指令名稱為 playlists
+        this.help = "顯示可用的播放清單"; // 指令說明
+        this.aliases = bot.getConfig().getAliases(this.name); // 指令的別名
+        this.guildOnly = true; // 只能在伺服器中使用
+        this.beListening = false; // 不需要在語音頻道內
+        this.bePlaying = false; // 不需要正在播放音樂
     }
     
     @Override
     public void doCommand(CommandEvent event) 
     {
+        // 如果播放清單資料夾不存在，則嘗試創建它
         if(!bot.getPlaylistLoader().folderExists())
             bot.getPlaylistLoader().createFolder();
+        
+        // 如果資料夾仍然不存在，回傳錯誤訊息
         if(!bot.getPlaylistLoader().folderExists())
         {
-            event.reply(event.getClient().getWarning()+" Playlists folder does not exist and could not be created!");
+            event.reply(event.getClient().getWarning()+" 播放清單資料夾不存在且無法創建！");
             return;
         }
+        
+        // 獲取播放清單名稱列表
         List<String> list = bot.getPlaylistLoader().getPlaylistNames();
-        if(list==null)
-            event.reply(event.getClient().getError()+" Failed to load available playlists!");
+        
+        // 如果無法載入，回傳錯誤訊息
+        if(list == null)
+            event.reply(event.getClient().getError()+" 載入可用的播放清單失敗！");
+        // 如果播放清單是空的，回傳警告訊息
         else if(list.isEmpty())
-            event.reply(event.getClient().getWarning()+" There are no playlists in the Playlists folder!");
+            event.reply(event.getClient().getWarning()+" 播放清單資料夾內沒有任何播放清單！");
         else
         {
-            StringBuilder builder = new StringBuilder(event.getClient().getSuccess()+" Available playlists:\n");
+            // 建立並回傳可用播放清單的訊息
+            StringBuilder builder = new StringBuilder(event.getClient().getSuccess()+" 可用的播放清單:\n");
             list.forEach(str -> builder.append("`").append(str).append("` "));
-            builder.append("\nType `").append(event.getClient().getTextualPrefix()).append("play playlist <name>` to play a playlist");
+            builder.append("\n輸入 `").append(event.getClient().getTextualPrefix()).append("play playlist <名稱>` 來播放播放清單");
             event.reply(builder.toString());
         }
     }
