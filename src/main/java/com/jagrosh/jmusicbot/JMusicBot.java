@@ -124,15 +124,16 @@ public class JMusicBot
                     .build();
             bot.setJDA(jda);
 
+            // No no no it is very bad because i stucked at turning off public bot
             // 檢查當前啟動是否不受支持
-            String unsupportedReason = OtherUtil.getUnsupportedBotReason(jda);
+            /*String unsupportedReason = OtherUtil.getUnsupportedBotReason(jda);
             if (unsupportedReason != null)
             {
                 prompt.alert(Prompt.Level.ERROR, "JMusicBot", "JMusicBot 無法在此 Discord 機器人上運行: " + unsupportedReason);
                 try{ Thread.sleep(5000);}catch(InterruptedException ignored){} // 這很糟糕，但直到我們有更好的方法...
                 jda.shutdown();
                 System.exit(1);
-            }
+            }*/
             
             // 其他檢查，現在只是警告，但將來可能會需要
             // 檢查用戶是否已更改前綴並提供有關
