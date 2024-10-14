@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Playlist generation snippets for advanced JMusicBot users">
+        <meta name="description" content="進階 JMusicBot 使用者的播放清單生成範例">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Advanced Playlist Generation - JMusicBot 維基</title>
+        <title>進階播放清單生成 - JMusicBot 維基</title>
       
     
     
@@ -66,8 +66,8 @@
 
   <!-- Open graph meta tags -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="JMusicBot 維基 - Advanced Playlist Generation" />
-  <meta property="og:description" content="Playlist generation snippets for advanced JMusicBot users" />
+  <meta property="og:title" content="JMusicBot 維基 - 進階播放清單生成" />
+  <meta property="og:description" content="進階 JMusicBot 使用者的播放清單生成範例" />
   <meta property="og:url" content="https://avianjay.github.io/MusicBot-zh_tw/advanced-playlists/" />
   <meta property="og:image" content="https://avianjay.github.io/MusicBot-zh_tw/assets/images/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -76,8 +76,8 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@jagrosh" />
   <meta name="twitter:creator" content="@jagrosh" />
-  <meta name="twitter:title" content="JMusicBot 維基 - Advanced Playlist Generation" />
-  <meta name="twitter:description" content="Playlist generation snippets for advanced JMusicBot users" />
+  <meta name="twitter:title" content="JMusicBot 維基 - 進階播放清單生成" />
+  <meta name="twitter:description" content="進階 JMusicBot 使用者的播放清單生成範例" />
   <meta name="twitter:image" content="https://avianjay.github.io/MusicBot-zh_tw/assets/images/logo.png" />
 
   </head>
@@ -103,7 +103,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#windows-desktop" class="md-skip">
+        <a href="#windows" class="md-skip">
           Skip to content
         </a>
       
@@ -135,7 +135,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Advanced Playlist Generation
+              進階播放清單生成
             
           </span>
         </div>
@@ -547,12 +547,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Advanced Playlist Generation
+          進階播放清單生成
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Advanced Playlist Generation
+        進階播放清單生成
       </a>
       
         
@@ -570,15 +570,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#windows-desktop" class="md-nav__link">
-    Windows (Desktop)
+  <a href="#windows" class="md-nav__link">
+    Windows（桌面）
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#linux-command-line" class="md-nav__link">
-    Linux (Command Line)
+  <a href="#linux" class="md-nav__link">
+    Linux（命令列）
   </a>
   
 </li>
@@ -666,15 +666,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#windows-desktop" class="md-nav__link">
-    Windows (Desktop)
+  <a href="#windows" class="md-nav__link">
+    Windows（桌面）
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#linux-command-line" class="md-nav__link">
-    Linux (Command Line)
+  <a href="#linux" class="md-nav__link">
+    Linux（命令列）
   </a>
   
 </li>
@@ -696,21 +696,21 @@
                   </a>
                 
                 
-                  <h1>Advanced Playlist Generation</h1>
+                  <h1>進階播放清單生成</h1>
                 
-                <p>This page describes how to generate playlist (txt) files from folders. These examples assume that your songs are in mp3 format; if you are using a different format, replace <code>mp3</code> with your format in all provided commands.</p>
-<h2 id="windows-desktop">Windows (Desktop)<a class="headerlink" href="#windows-desktop" title="Permanent link">#</a></h2>
+                <p>此頁面描述如何從文件夾生成播放清單（txt）文件。這些範例假設您的歌曲為 mp3 格式；如果您使用不同格式，請在所有提供的命令中將 <code>mp3</code> 替換為您的格式。</p>
+<h2 id="windows">Windows（桌面）<a class="headerlink" href="#windows" title="Permanent link">#</a></h2>
 <ol>
-<li>Open Powershell in the folder with your songs (you can Shift-Right-Click and select Open Powershell Window Here from within an Explorer window)</li>
-<li>Run <strong><code>Get-ChildItem . -Filter *.mp3 -Recurse | % { $_.FullName } | out-file -encoding ASCII songs.txt</code></strong></li>
-<li>Move songs.txt to your Playlists folder and rename it to whatever you want the playlist to be called.</li>
-<li>Edit songs.txt if you want to add additional songs or any other comments</li>
+<li>在包含歌曲的文件夾中打開 Powershell（您可以按住 Shift 並右鍵點擊，然後從 Explorer 視窗中選擇在此處打開 Powershell 視窗）</li>
+<li>執行 <strong><code>Get-ChildItem . -Filter *.mp3 -Recurse | % { $_.FullName } | out-file -encoding ASCII songs.txt</code></strong></li>
+<li>將 songs.txt 移動到您的 Playlists 文件夾，並將其重命名為您想要的播放清單名稱。</li>
+<li>如果您想添加其他歌曲或評論，可以編輯 songs.txt</li>
 </ol>
-<h2 id="linux-command-line">Linux (Command Line)<a class="headerlink" href="#linux-command-line" title="Permanent link">#</a></h2>
+<h2 id="linux">Linux（命令列）<a class="headerlink" href="#linux" title="Permanent link">#</a></h2>
 <ol>
-<li>Navigate to the folder with yours songs (<code>cd /path/to/the/folder</code>)</li>
-<li>Run <strong><code>find "$(pwd)" | grep ".mp3" &gt; songs.txt</code></strong></li>
-<li>Move <code>songs.txt</code> to your Playlists folder and rename it (<code>mv songs.txt /path/to/Playlists/playlistname.txt</code>)</li>
+<li>瀏覽到包含歌曲的文件夾 (<code>cd /path/to/the/folder</code>)</li>
+<li>執行 <strong><code>find "$(pwd)" | grep ".mp3" &gt; songs.txt</code></strong></li>
+<li>將 <code>songs.txt</code> 移動到您的 Playlists 文件夾並重命名 (<code>mv songs.txt /path/to/Playlists/playlistname.txt</code>)</li>
 </ol>
                 
                   
