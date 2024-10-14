@@ -1,72 +1,72 @@
 ---
-title: Example Config
-description: "Example config file for JMusicBot"
+title: 範例設置
+description: "JMusicBot的範例設定檔案"
 ---
 
 ```
+// JMUSICBOT 配置 開始 ///
 /////////////////////////////////////////////////////////
-// Config for the JMusicBot                            //
+// JMusicBot 的配置                                   //
 /////////////////////////////////////////////////////////
-// Any line starting with // is ignored                //
-// You MUST set the token and owner                    //
-// All other items have defaults if you don't set them //
-// Open in Notepad++ for best results                  //
+// 以 // 開頭的任何行都會被忽略                      //
+// 您必須設置令牌和擁有者                            //
+// 如果您不設置其他項目，將使用默認值                //
+// 最佳結果請在 Notepad++ 中打開                    //
 /////////////////////////////////////////////////////////
 
-
-// This sets the token for the bot to log in with
-// This MUST be a bot token (user tokens will not work)
-// If you don't know how to get a bot token, please see the guide here:
+// 此設置用於機器人登錄的令牌
+// 這必須是機器人令牌（用戶令牌無法使用）
+// 如果您不知道如何獲取機器人令牌，請參閱這裡的指南：
 // https://github.com/jagrosh/MusicBot/wiki/Getting-a-Bot-Token
 
 token = BOT_TOKEN_HERE
 
 
-// This sets the owner of the bot
-// This needs to be the owner's ID (a 17-18 digit number)
+// 此設置機器人的擁有者
+// 這需要是擁有者的 ID（17-18 位數字）
 // https://github.com/jagrosh/MusicBot/wiki/Finding-Your-User-ID
 
-owner = 0 // OWNER ID
+owner = 0 // 擁有者 ID
 
 
-// This sets the prefix for the bot
-// The prefix is used to control the commands
-// If you use !!, the play command will be !!play
-// If you do not set this, the prefix will be a mention of the bot (@Botname play)
+// 此設置用於機器人的前綴
+// 前綴用於控制命令
+// 如果使用 !!，播放命令將為 !!play
+// 如果不設置，則前綴將為對機器人的提及 (@Botname play)
 
 prefix = "@mention"
 
 
-// If you set this, it modifies the default game of the bot
-// Set this to NONE to have no game
-// Set this to DEFAULT to use the default game
-// You can make the game "Playing X", "Listening to X", or "Watching X"
-// where X is the title. If you don't include an action, it will use the
-// default of "Playing"
+// 如果您設置此項，將修改機器人的默認遊戲
+// 設置為 NONE 以無遊戲
+// 設置為 DEFAULT 使用默認遊戲
+// 您可以將遊戲設置為 "Playing X"、"Listening to X" 或 "Watching X"
+// 其中 X 是標題。如果不包含動作，則將使用
+// 默認的 "Playing"
 
 game = "DEFAULT"
 
 
-// If you set this, it will modify the default status of bot
-// Valid values: ONLINE IDLE DND INVISIBLE
+// 如果您設置此項，它將修改機器人的默認狀態
+// 有效值：ONLINE IDLE DND INVISIBLE
 
 status = ONLINE
 
 
-// If you set this to true, the bot will list the title of the song it is currently playing in its
-// "Playing" status. Note that this will ONLY work if the bot is playing music on ONE guild;
-// if the bot is playing on multiple guilds, this will not work.
+// 如果您將此設置為 true，機器人將在其
+// "Playing" 狀態中列出當前播放的歌曲標題。請注意，這僅在機器人在一個公會中播放音樂時有效；
+// 如果機器人在多個公會中播放，則此功能將無法使用。
 
-songinstatus=false
+songinstatus = false
 
 
-// If you set this, the bot will also use this prefix in addition to
-// the one provided above
+// 如果您設置此項，機器人將在提供的前綴之外
+// 也使用此前綴
 
 altprefix = "NONE"
 
 
-// If you set these, it will change the various emojis
+// 如果您設置這些，它將更改各種表情符號
 
 success = "🎶"
 warning = "💡"
@@ -75,95 +75,93 @@ loading = "⌚"
 searching = "🔎"
 
 
-// If you set this, you change the word used to view the help.
-// For example, if you set the prefix to !! and the help to cmds, you would type
-// !!cmds to see the help text
+// 如果您設置此項，將更改用於查看幫助的單詞。
+// 例如，如果您將前綴設置為 !! 且幫助為 cmds，您可以輸入
+// !!cmds 來查看幫助文本
 
 help = help
 
 
-// If you set this, the "nowplaying" command will show youtube thumbnails
-// Note: If you set this to true, the nowplaying boxes will NOT refresh
-// This is because refreshing the boxes causes the image to be reloaded
-// every time it refreshes.
+// 如果您設置此項，"nowplaying" 命令將顯示 YouTube 縮略圖
+// 注意：如果您將此設置為 true，nowplaying 方框將不會刷新
+// 這是因為刷新方框會導致圖像在每次刷新時重新加載。
 
 npimages = false
 
 
-// If you set this, the bot will not leave a voice channel after it finishes a queue.
-// Keep in mind that being connected to a voice channel uses additional bandwith,
-// so this option is not recommended if bandwidth is a concern.
+// 如果您設置此項，機器人將在完成隊列後不會離開語音頻道。
+// 請記住，連接到語音頻道會使用額外的帶寬，
+// 因此如果帶寬是個問題，則不建議使用此選項。
 
 stayinchannel = false
 
 
-// This sets the maximum amount of seconds any track loaded can be. If not set or set
-// to any number less than or equal to zero, there is no maximum time length. This time
-// restriction applies to songs loaded from any source.
+// 此設置加載的任何曲目最大可以是幾秒鐘。如果未設置或設置
+// 為任何小於或等於零的數字，則沒有最大時間長度。此時間
+// 限制適用於從任何來源加載的歌曲。
 
 maxtime = 0
 
-// This sets the maximum number of pages of songs that can be loaded from a YouTube
-// playlist. Each page can contain up to 100 tracks. Playing a playlist with more
-// pages than the maximum will stop loading after the provided number of pages.
-// For example, if the max was set to 15 and a playlist contained 1850 tracks,
-// only the first 1500 tracks (15 pages) would be loaded. By default, this is
-// set to 10 pages (1000 tracks).
+// 此設置可以從 YouTube 播放列表中加載的最大歌曲頁數。
+// 每頁最多可以包含 100 首曲目。播放的播放列表如果有
+// 超過最大頁數，將在提供的頁數後停止加載。
+// 例如，如果最大設置為 15，而播放列表包含 1850 首曲目，
+// 則僅加載前 1500 首曲目（15 頁）。默認情況下，這設置為
+// 10 頁（1000 首曲目）。
 
 maxytplaylistpages = 10
 
 
-// This sets the ratio of users that must vote to skip the currently playing song.
-// Guild owners can define their own skip ratios, but this will be used if a guild
-// has not defined their own skip ratio.
+// 此設置必須投票以跳過當前播放的歌曲的用戶比例。
+// 公會擁有者可以定義自己的跳過比例，但如果公會
+// 未定義自己的跳過比例，則將使用此比例。
 
 skipratio = 0.55
 
 
-// This sets the amount of seconds the bot will stay alone on a voice channel until it
-// automatically leaves the voice channel and clears the queue. If not set or set
-// to any number less than or equal to zero, the bot won't leave when alone.
+// 此設置為機器人在語音頻道獨自停留的時間，直到它
+// 自動離開語音頻道並清除隊列。如果未設置或設置
+// 為任何小於或等於零的數字，則機器人在獨自一人時不會離開。
 
 alonetimeuntilstop = 0
 
 
-// This sets an alternative folder to be used as the Playlists folder
-// This can be a relative or absolute path
+// 此設置用作播放列表文件夾的替代文件夾
+// 可以是相對路徑或絕對路徑
 
 playlistsfolder = "Playlists"
 
 
-// By default, the bot will DM the owner if the bot is running and a new version of the bot
-// becomes available. Set this to false to disable this feature.
+// 默認情況下，如果機器人在運行並且有新版本可用，
+// 機器人將私信擁有者。將此設置為 false 以禁用此功能。
 
-updatealerts=true
+updatealerts = true
 
 
-// Changing this changes the lyrics provider
-// Currently available providers: "A-Z Lyrics", "Genius", "MusicMatch", "LyricsFreak"
-// At the time of writing, I would recommend sticking with A-Z Lyrics or MusicMatch,
-// as Genius tends to have a lot of non-song results and you might get something 
-// completely unrelated to what you want.
-// If you are interested in contributing a provider, please see
+// 更改此設置會更改歌詞提供者
+// 當前可用的提供者有："A-Z Lyrics"、"Genius"、"MusicMatch"、"LyricsFreak"
+// 在寫作時，我建議使用 A-Z Lyrics 或 MusicMatch，
+// 因為 Genius 通常有很多非歌曲結果，您可能會獲得與您想要的內容完全無關的東西。
+// 如果您有興趣貢獻提供者，請參見
 // https://github.com/jagrosh/JLyrics
 
 lyrics.default = "A-Z Lyrics"
 
 
-// These settings allow you to configure custom aliases for all commands.
-// Multiple aliases may be given, separated by commas.
+// 這些設置允許您為所有命令配置自定義別名。
+// 多個別名可以用逗號分隔給出。
 //
-// Example 1: Giving command "play" the alias "p":
+// 示例 1：將命令 "play" 的別名設置為 "p"：
 // play = [ p ]
 //
-// Example 2: Giving command "search" the aliases "yts" and "find":
+// 示例 2：將命令 "search" 的別名設置為 "yts" 和 "find"：
 // search = [ yts, find ]
 
 aliases {
-  // General commands
+  // 一般命令
   settings = [ status ]
 
-  // Music commands
+  // 音樂命令
   lyrics = []
   nowplaying = [ np, current ]
   play = []
@@ -175,14 +173,14 @@ aliases {
   shuffle = []
   skip = [ voteskip ]
 
-  // Admin commands
+  // 管理員命令
   prefix = [ setprefix ]
   setdj = []
   setskip = [ setskippercent, skippercent, setskipratio ]
   settc = []
   setvc = []
 
-  // DJ Commands
+  // DJ 命令
   forceremove = [ forcedelete, modremove, moddelete, modelete ]
   forceskip = [ modskip ]
   movetrack = [ move ]
@@ -196,39 +194,41 @@ aliases {
 }
 
 
-// This sets the logging verbosity.
-// Available levels: off, error, warn, info, debug, trace, all
+// 此設置日誌詳細程度。
+// 可用級別：off、error、warn、info、debug、trace、all
 //
-// It is recommended to leave this at info. Debug log levels might help with troubleshooting,
-// but can contain sensitive data.
+// 建議將此設置為 info。調試日誌級別可能有助於故障排除，
+// 但可能包含敏感數據。
 
 loglevel = info
 
 
-// Transforms are used to modify specific play inputs and convert them to different kinds of inputs
-// These are quite complicated to use, and have limited use-cases, but in theory allow for rough
-// whitelists or blacklists, roundabout loading from some sources, and customization of how things are
-// requested.
+// 變換用於修改特定播放輸入並將其轉換為不同類型的輸入
+// 這些相當複雜且用例有限，但理論上允許進行粗略的
+// 白名單或黑名單，從某些來源繞道加載，以及自定義如何
+// 請求內容。
 //
-// These are NOT EASY to set up, so if you want to use these, you'll need to look through the code 
-// for how they work and what fields are needed. Also, it's possible this feature might get entirely
-// removed in the future if I find a better way to do this.
+// 這些不容易設置，因此如果您想使用它們，您需要查看代碼
+// 了解它們如何工作以及需要哪些字段。此外，如果我找到更好的方法
+// 這個功能可能會在未來被完全刪除。
 
 transforms = {}
 
 
-// If you set this to true, it will enable the eval command for the bot owner. This command
-// allows the bot owner to run arbitrary code from the bot's account.
+// 如果您將此設置為 true，則會為機器人擁有者啟用 eval 命令。此命令
+// 允許機器人擁有者從機器人的帳戶運行任意代碼。
 //
-// WARNING:
-// This command can be extremely dangerous. If you don't know what you're doing, you could
-// cause horrific problems on your Discord server or on whatever computer this bot is running
-// on. Never run this command unless you are completely positive what you are running.
+// 警告：
+// 此命令可能極其危險。如果您不知道自己在做什麼，可能會
+// 在您的 Discord 伺服器或運行此機器人的任何計算機上造成可怕的問題。
+// 除非您完全確定自己在運行什麼，否則請勿運行此命令。
 //
-// DO NOT ENABLE THIS IF YOU DON'T KNOW WHAT THIS DOES OR HOW TO USE IT
-// IF SOMEONE ASKS YOU TO ENABLE THIS, THERE IS AN 11/10 CHANCE THEY ARE TRYING TO SCAM YOU
+// 如果您不知道這是什麼或如何使用，請不要啟用此功能
+// 如果有人要求您啟用此功能，有 11/10 的可能性他們在試圖詐騙您。
 
-eval=false
-evalengine="Nashorn"
+eval = false
+evalengine = "Nashorn"
 
+
+/// JMUSICBOT 配置 結束 ///
 ```
