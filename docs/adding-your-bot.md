@@ -1,33 +1,33 @@
 ---
-title: Adding Your Bot To Your Server
-description: "Instructions for how to add your Discord bot to your Discord server"
+title: 將您的機器人添加到您的伺服器
+description: "如何將 Discord 機器人添加到您的 Discord 伺服器的指南"
 ---
 
-!!! help "Don't have an application?"
-    If you don't have a bot application created, please reference [Getting a Bot Token](getting-a-bot-token.md) for how to set one up!
+!!! help "還沒有創建應用程式？"
+    如果您還沒有創建機器人應用程式，請參考 [獲取機器人 Token](getting-a-bot-token.md) 來了解如何設置！
 
-1. Navigate to the [Applications page](https://discordapp.com/developers/applications) and select one of your bot applications.  
-![App Page](/assets/images/app-page.png)
+1. 前往 [應用程式頁面](https://discordapp.com/developers/applications) 並選擇您的其中一個機器人應用程式。  
+![應用程式頁面](/assets/images/app-page.png)
 
-2. In the Settings list, select **OAuth2**.  
+2. 在設置列表中，選擇 **OAuth2**。  
 ![OAuth2](/assets/images/oauth.png)
 
-3. In the **Scopes** section, check **Bot**.  
+3. 在 **Scopes** 區域，勾選 **Bot**。  
 ![Scopes](/assets/images/scopes.png)
 
-4. Click **Copy** to copy the OAuth2 URL to your clipboard.  
-![Copy](/assets/images/oauth-url.png)
+4. 點擊 **複製** 按鈕將 OAuth2 URL 複製到剪貼簿。  
+![複製](/assets/images/oauth-url.png)
 
-5. Paste the link into your browser.  
-![Paste](/assets/images/browser.png)
+5. 將鏈接貼到您的瀏覽器中。  
+![貼上](/assets/images/browser.png)
 
-6. Select a server from the drop-down menu and then click **Authorize**. **You must have the Manage Server permission to add a bot to a server!** If no servers appear, you may need to [log in](https://discordapp.com/login).  
-![Select Server](/assets/images/invite.png)
+6. 從下拉選單中選擇一個伺服器，然後點擊 **授權**。 **您必須擁有管理伺服器的權限才能將機器人添加到伺服器！** 如果未顯示任何伺服器，您可能需要 [登錄](https://discordapp.com/login)。  
+![選擇伺服器](/assets/images/invite.png)
 
 
-## Troubleshooting
-* If you get a "Requires Code Grant" error, make sure that this box is **unchecked** on your application: <br>![Code Grant](/assets/images/code-grant.png)
-* If you want to generate the link manually, replace the CLIENTID in the following link with your bot's client ID:
+## 疑難排解
+* 如果您收到 "需要授權碼 (Requires Code Grant)" 錯誤，請確保您的應用程式中該選項未被勾選：<br>![授權碼](/assets/images/code-grant.png)
+* 如果您想手動生成鏈接，請將以下鏈接中的 CLIENTID 替換為您的機器人客戶端 ID：
 ```
 https://discordapp.com/oauth2/authorize?client_id=CLIENTID&scope=bot
 ```
