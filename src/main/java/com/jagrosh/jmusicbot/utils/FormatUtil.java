@@ -1,17 +1,15 @@
 /*
  * Copyright 2016 John Grosh <john.a.grosh@gmail.com>.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * 根據 Apache License 2.0 版（以下簡稱「許可證」）授權使用本文件；
+ * 除非遵守許可證，否則您不得使用本文件。
+ * 您可以在以下網址獲取許可證副本：
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 除非適用法律要求或書面同意，根據許可證分發的軟體按「現狀」提供，
+ * 不附帶任何明示或默示的保證或條件。
+ * 請參閱許可證以瞭解具體的許可權和限制。
  */
 package com.jagrosh.jmusicbot.utils;
 
@@ -74,39 +72,39 @@ public class FormatUtil {
     
     public static String listOfTChannels(List<TextChannel> list, String query)
     {
-        String out = " Multiple text channels found matching \""+query+"\":";
+        String out = " 找到多個符合 \""+query+"\" 的文字頻道：";
         for(int i=0; i<6 && i<list.size(); i++)
             out+="\n - "+list.get(i).getName()+" (<#"+list.get(i).getId()+">)";
         if(list.size()>6)
-            out+="\n**And "+(list.size()-6)+" more...**";
+            out+="\n**還有 "+(list.size()-6)+" 個...**";
         return out;
     }
     
     public static String listOfVChannels(List<VoiceChannel> list, String query)
     {
-        String out = " Multiple voice channels found matching \""+query+"\":";
+        String out = " 找到多個符合 \""+query+"\" 的語音頻道：";
         for(int i=0; i<6 && i<list.size(); i++)
             out+="\n - "+list.get(i).getAsMention()+" (ID:"+list.get(i).getId()+")";
         if(list.size()>6)
-            out+="\n**And "+(list.size()-6)+" more...**";
+            out+="\n**還有 "+(list.size()-6)+" 個...**";
         return out;
     }
     
     public static String listOfRoles(List<Role> list, String query)
     {
-        String out = " Multiple roles found matching \""+query+"\":";
+        String out = " 找到多個符合 \""+query+"\" 的角色：";
         for(int i=0; i<6 && i<list.size(); i++)
             out+="\n - "+list.get(i).getName()+" (ID:"+list.get(i).getId()+")";
         if(list.size()>6)
-            out+="\n**And "+(list.size()-6)+" more...**";
+            out+="\n**還有 "+(list.size()-6)+" 個...**";
         return out;
     }
     
     public static String filter(String input)
     {
         return input.replace("\u202E","")
-                .replace("@everyone", "@\u0435veryone") // cyrillic letter e
-                .replace("@here", "@h\u0435re") // cyrillic letter e
+                .replace("@everyone", "@\u0435veryone") // 西里爾字母 e
+                .replace("@here", "@h\u0435re") // 西里爾字母 e
                 .trim();
     }
 }
