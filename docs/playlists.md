@@ -1,67 +1,67 @@
 ---
-title: Playlists
-description: "Playlists on JMusicBot"
+title: 播放清單
+description: "JMusicBot 上的播放清單"
 ---
 
-## 📃 Youtube Playlists
-To play a youtube playlist, all you need is the `play` command and a playlist link or playlist ID.
+## 📃 Youtube 播放清單
+要播放 YouTube 播放清單，你只需要使用 `play` 指令加上播放清單的鏈接或播放清單 ID。
 
-Examples:
+範例：
 ```diff
-# Full Playlist URL
+# 完整的播放清單 URL
 + !play https://www.youtube.com/playlist?list=PLUib4KwT0DMJaPgg_nr1ia8FY5JcXksvb
 
-# Playlist ID
+# 播放清單 ID
 + !play PLUib4KwT0DMJaPgg_nr1ia8FY5JcXksvb
 
-# Not a Playlist link! (notice the `watch?v=`)
+# 不是播放清單鏈接！(注意這裡有 `watch?v=`)
 - !play https://www.youtube.com/watch?v=bd2B6SjMh_w&list=PLUib4KwT0DMJaPgg_nr1ia8FY5JcXksvb&index=4
 ```
 
 
-## 📃 Local Playlists
-Local playlists are .txt files found in the `Playlists` folder in the same folder as you are running the bot from. Each line of the file is a new entry, and entries can be:
-* links to youtube videos, soundcloud tracks, or online files
-* full or relative path to local files
-* links to youtube or soundcloud playlists
-* links to online streams or radio
-* searches, prefixed by `ytsearch:` for a youtube search and `scsearch:` for a soundcloud search
+## 📃 本地播放清單
+本地播放清單是位於與運行機器人相同資料夾中 `Playlists` 資料夾內的 .txt 文件。文件的每一行都是一個新條目，條目可以是：
+* YouTube 視頻、SoundCloud 曲目或在線文件的鏈接
+* 本地文件的完整或相對路徑
+* YouTube 或 SoundCloud 播放清單的鏈接
+* 在線流媒體或廣播的鏈接
+* 搜索結果，前綴為 `ytsearch:` 表示 YouTube 搜索，`scsearch:` 表示 SoundCloud 搜索
 
-Lines starting with `#` or `//` are ignored for songs. To make a playlist automatically shuffle when loaded, add `#shuffle` or `//shuffle` on its own line somewhere in the playlist.
+以 `#` 或 `//` 開頭的行會被忽略。如果希望播放清單在加載時自動隨機播放，請在播放清單中的任意位置單獨添加 `#shuffle` 或 `//shuffle`。
 
-Example Playlist:
+範例播放清單：
 ```
-# This is an example playlist
-# You can put this in your Playlists folder as example_playlist.txt
+# 這是一個範例播放清單
+# 你可以將此文件作為 example_playlist.txt 放入你的 Playlists 資料夾
 
-# The following line currently makes the playlist shuffle
-# Remove this line entirely if you don't want shuffling
+# 以下行使播放清單隨機播放
+# 如果不想隨機播放，請完全刪除此行
 # shuffle
 
-# youtube playlist id:
+# YouTube 播放清單 ID：
 PLUib4KwT0DMJaPgg_nr1ia8FY5JcXksvb
 
-# searches
+# 搜索
 ytsearch:gorillaz dare audio
 scsearch:lights metrognome
 
-# direct link
+# 直接鏈接
 https://www.youtube.com/watch?v=x7ogV49WGco
 ```
-Example Command:
+範例指令：
 ```
 !play playlist example_playlist
 ```
 
 
-## 📃 Soundcloud Playlists
-Just use the `play` command followed by the playlist link.
+## 📃 Soundcloud 播放清單
+只需使用 `play` 指令，後面加上播放清單鏈接。
 
-Example:
+範例：
 ```
-!play [link coming soon]
+!play [鏈接即將發布]
 ```
 
 
 ## 📃 Spotify
-Unfortunately, Spotify's Terms of Service prevent playing music from Spotify. Please consider using a playlist converter such as [PlaylistConverter.net](http://www.playlist-converter.net/) to convert a Spotify playlist into a YouTube playlist.
+很遺憾，Spotify 的服務條款禁止直接播放 Spotify 的音樂。請考慮使用像 [PlaylistConverter.net](http://www.playlist-converter.net/) 這樣的播放清單轉換器，將 Spotify 播放清單轉換為 YouTube 播放清單。
