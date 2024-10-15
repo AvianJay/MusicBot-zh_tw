@@ -5,7 +5,7 @@ description: "🎶 一款簡單設置並能自己運行的 Discord 音樂機器�
 
 ## 歡迎來到 **JMusicBot** 維基！
 
-<img align="right" src="../assets/images/logo.png" style="border:2px solid;border-radius:50px;" height="200" width="200">
+<img align="right" src="assets/images/logo.png" style="border:2px solid;border-radius:50px;" height="200" width="200">
 
 [🔢 設置](setup.md){ .md-button }
 [⏰ 24/7 託管](hosting.md){ .md-button } 
@@ -20,7 +20,7 @@ description: "🎶 一款簡單設置並能自己運行的 Discord 音樂機器�
 [![授權](https://img.shields.io/github/license/jagrosh/MusicBot.svg)](https://github.com/jagrosh/MusicBot/blob/master/LICENSE)
 [![Discord](https://discordapp.com/api/guilds/147698382092238848/widget.png)](https://discord.gg/0p9LSGoRLu6Pet0k)
 
-[![設置](../assets/images/setup-banner.png)](setup.md)
+[![設置](assets/images/setup-banner.png)](setup.md)
 
 ## 功能
   * 簡單運行（確保安裝了 Java，然後運行即可！）
@@ -55,7 +55,7 @@ JMusicBot 支援 [lavaplayer](https://github.com/sedmelluq/lavaplayer#supported-
   * 串流播放清單 (M3U 和 PLS)
 
 ## 範例
-![加載範例...](../assets/images/example.gif)
+![加載範例...](assets/images/example.gif)
 
 ## 設置
 請參閱維基中的 [設置頁面](setup.md) 來自行運行此機器人！
