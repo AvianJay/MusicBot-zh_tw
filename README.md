@@ -1,16 +1,15 @@
 <img align="right" src="https://i.imgur.com/zrE80HY.png" height="200" width="200">
 
 # JMusicBot-zh_TW
-使用ChatGPT翻譯過後的音樂機器人。
+使用ChatGPT翻譯至繁體中文後的音樂機器人。<br>
+原專案：[jagrosh/MusicBot](https://github.com/jagrosh/MusicBot)
 
 [![Downloads](https://img.shields.io/github/downloads/AvianJay/MusicBot-zh_tw/total.svg)](https://github.com/AvianJay/MusicBot-zh_tw/releases/latest)
 [![Stars](https://img.shields.io/github/stars/AvianJay/MusicBot-zh_tw.svg)](https://github.com/AvianJay/MusicBot-zh_tw/stargazers)
 [![Release](https://img.shields.io/github/release/AvianJay/MusicBot-zh_tw.svg)](https://github.com/AvianJay/MusicBot-zh_tw/releases/latest)
 [![License](https://img.shields.io/github/license/AvianJay/MusicBot-zh_tw.svg)](https://github.com/AvianJay/MusicBot-zh_tw/blob/master/LICENSE)
 [![Discord(原官方)](https://discordapp.com/api/guilds/147698382092238848/widget.png)](https://discord.gg/0p9LSGoRLu6Pet0k)<br>
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/AvianJay/MusicBot-zh_tw/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/AvianJay/MusicBot-zh_tw/tree/master)
 [![Build and Test](https://github.com/AvianJay/MusicBot-zh_tw/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/AvianJay/MusicBot-zh_tw/actions/workflows/build-and-test.yml)
-[![CodeFactor](https://www.codefactor.io/repository/github/AvianJay/MusicBot-zh_tw/badge)](https://www.codefactor.io/repository/github/AvianJay/MusicBot-zh_tw)
 
 一個跨平台的 Discord 音樂機器人，擁有簡潔的介面，並且容易設定與自行運行！
 
@@ -27,6 +26,7 @@
   * 支援許多線上電台/串流
   * 支援本地檔案
   * 支援播放清單（包括網頁/YouTube 和本地）
+  * 已被繁體中文化
 
 ## 支援的來源和格式
 JMusicBot 支援 [lavaplayer](https://github.com/sedmelluq/lavaplayer#supported-formats) 支援的所有來源和格式：
