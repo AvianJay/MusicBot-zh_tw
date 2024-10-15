@@ -1,16 +1,16 @@
 ---
-title: Things that Won't be Added
-description: "Things that will not be added to JMusicBot"
+title: 不會被添加的功能
+description: "JMusicBot 不會添加的功能"
 ---
 
-### Non-Music Commands/Features
-JMusicBot is a music bot, so features that have no relation to music (such as moderation or image-generation features) will not be added. If you need a bot that does things other than music, consider searching on the [Discord Bots website](https://discord.bots.gg).
+### 非音樂相關的命令/功能
+JMusicBot 是一個音樂機器人，因此與音樂無關的功能（例如管理或圖像生成功能）不會被添加。如果您需要一個能做音樂以外事情的機器人，請考慮在 [Discord 機器人網站](https://discord.bots.gg) 上搜尋其他選項。
 
 ### Spotify
-Playing from Spotify is not possible, for three main reasons:
-1. This would require an additional API key to look up songs on Spotify, which would be confusing for some users and overall make the bot feel more complicated to use.
-2. Streaming from Spotify isn't allowed, so the bot would have to "guess" and just play the closest match from YouTube, which is unreliable at best.
-3. Discord already has native support for syncing up Spotify playlists between users, so there's no reason to not just use that (and get better audio anyway from Spotify instead of from a Discord voice channel).
+無法從 Spotify 播放音樂，原因主要有三點：
+1. 這需要額外的 API 金鑰來查找 Spotify 上的歌曲，這對某些用戶來說可能會造成困惑，並且整體上會讓機器人變得更難使用。
+2. Spotify 不允許流媒體播放，因此機器人只能「猜測」並從 YouTube 播放最接近的匹配歌曲，這種方法往往並不可靠。
+3. Discord 已經原生支持在用戶之間同步 Spotify 播放列表，因此直接使用這個功能會更好（而且通過 Spotify 播放的音質也比從 Discord 語音頻道播放的更好）。
 
-### Features Requiring Additional API Keys
-This includes things like Spotify (as noted above), which would require users to obtain and configure more keys (beyond a Discord bot token). This process can be confusing for some users and there are other tools online that can do the job better (in most cases).
+### 需要額外 API 金鑰的功能
+這包括像 Spotify 這樣的功能（如上所述），這將要求用戶獲取並配置更多的金鑰（除了 Discord 機器人 token 之外）。這個過程對某些用戶來說可能會感到困惑，並且大多數情況下有其他線上的工具能更好地完成這項工作。
