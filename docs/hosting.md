@@ -1,90 +1,90 @@
 ---
-title: Hosting
-description: "Recommended hosts for JMusicBot"
+title: 託管
+description: "JMusicBot 推薦的託管服務"
 ---
 
-_I want to run this bot 24/7! How can I do this?_
+_我想要 24/7 運行這個機器人！我該怎麼做呢？_
 
-Well, there are many options available; I've described several of the most-common options below, including their pros (+) and cons (-).
+這裡有很多選擇；我在下面描述了幾個最常見的選項，包括它們的優點 (+) 和缺點 (-)。
 
-## 🌐 Online Hosting
+## 🌐 在線託管
 
 ### [OVH](https://www.ovh.com/world/vps/vps-ssd.xml)
 ```diff
-+ Best power-to-cost ratio
-+ No usage limits
-+ Reliable
-- No free trial
++ 最佳性價比
++ 無使用限制
++ 穩定可靠
+- 無免費試用
 ```
 
 ### [DigitalOcean](https://www.digitalocean.com/pricing/#Compute)
 ```diff
-+ $50 credit with GitHub Student Pack (requires Credit Card and $5 down payment)
-+ Useful tutorials
-+ No usage limits
-- Poor power-to-cost ratio
++ 使用 GitHub 學生包可獲得 50 美元信用額度（需要信用卡和 5 美元押金）
++ 有用的教程
++ 無使用限制
+- 性能與價格不成比例
 ```
 
 ### [Google Cloud](https://cloud.google.com/compute/all-pricing)
 ```diff
-+ $300 free credit (requires Credit Card)
-+ Free tier hosting
-- Billed for usage above certain limits
++ 免費 300 美元信用額度（需要信用卡）
++ 免費層託管
+- 超過特定限制後收費
 ```
 
 ### [Amazon Web Services](https://aws.amazon.com/ec2/)
 ```diff
-+ 1 year free credit (requires Credit Card)
-- Billed for usage above certain limits
++ 1 年免費信用額度（需要信用卡）
+- 超過特定限制後收費
 ```
 
 <br>
 
-## 🏠 Home Hosting
+## 🏠 家用託管
 
-### Desktop PC
+### 桌面電腦
 ```diff
-+ Easiest access
-+ Familiar OS/Environment
-- High electricity costs
-- Shared home internet bandwidth
-- CPU & RAM usage on main PC
++ 最簡單的訪問
++ 熟悉的操作系統/環境
+- 高電力成本
+- 與家用網絡共享帶寬
+- 佔用主電腦的 CPU 和 RAM 資源
 ```
 
-### Dedicated Server
+### 專用服務器
 ```diff
-+ Familiar OS/Environment
-- High electricity costs
-- Shared home internet bandwidth
++ 熟悉的操作系統/環境
+- 高電力成本
+- 與家用網絡共享帶寬
 ```
 
 ### Raspberry Pi
 ```diff
-+ Low electricity costs
-- Shared home internet bandwidth
-- Possible poor performance for multiple streams
++ 低電力成本
+- 與家用網絡共享帶寬
+- 多個流時可能性能不佳
 ```
 
 <br>
 
-## 🚫 Don't Use This Hosting
+## 🚫 不推薦的託管選項
 
 ### Heroku
 ```diff
-- No file write access (server settings can't be changed)
-- Usage limits (can only run for a portion of a month)
-- Poor performance
+- 無文件寫入權限（無法更改服務器設置）
+- 使用限制（每月只能運行一部分時間）
+- 性能不佳
 ```
 
 ### Glitch
 ```diff
-- No file write access (server settings can't be changed)
-- Usage limits
-- Poor performance
+- 無文件寫入權限（無法更改服務器設置）
+- 使用限制
+- 性能不佳
 ```
 
 ### Replit
 ```diff
-- Usage limits
-- Poor performance
+- 使用限制
+- 性能不佳
 ```
