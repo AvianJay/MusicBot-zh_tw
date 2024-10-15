@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: jar
-          path: JMusicBot-${{ github.event.inputs.version_number }}.jar
+          path: JMusicBot-zh_TW-${{ github.event.inputs.version_number }}.jar
           if-no-files-found: error
   create_release:
     name: Create Release
@@ -67,4 +67,4 @@ jobs:
             ### 設定
             https://avianjay.github.io/MusicBot-zh_tw/setup  
             https://avianjay.github.io/MusicBot-zh_tw/config  
-            # 下載: [JMusicBot-${{ github.event.inputs.version_number }}.jar](https://github.com/AvianJay/MusicBot-zh_tw/releases/download/${{ github.event.inputs.version_number }}/JMusicBot-${{ github.event.inputs.version_number }}.jar)
+            # 下載: [JMusicBot-zh_TW-${{ github.event.inputs.version_number }}.jar](https://github.com/AvianJay/MusicBot-zh_tw/releases/download/${{ github.event.inputs.version_number }}/JMusicBot-zh_TW-${{ github.event.inputs.version_number }}.jar)
