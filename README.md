@@ -3,18 +3,18 @@
 # JMusicBot-zh_TW
 使用ChatGPT翻譯過後的音樂機器人。
 
-[![Downloads](https://img.shields.io/github/downloads/jagrosh/MusicBot/total.svg)](https://github.com/jagrosh/MusicBot/releases/latest)
-[![Stars](https://img.shields.io/github/stars/jagrosh/MusicBot.svg)](https://github.com/jagrosh/MusicBot/stargazers)
-[![Release](https://img.shields.io/github/release/jagrosh/MusicBot.svg)](https://github.com/jagrosh/MusicBot/releases/latest)
-[![License](https://img.shields.io/github/license/jagrosh/MusicBot.svg)](https://github.com/jagrosh/MusicBot/blob/master/LICENSE)
-[![Discord](https://discordapp.com/api/guilds/147698382092238848/widget.png)](https://discord.gg/0p9LSGoRLu6Pet0k)<br>
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/jagrosh/MusicBot/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/jagrosh/MusicBot/tree/master)
-[![Build and Test](https://github.com/jagrosh/MusicBot/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/jagrosh/MusicBot/actions/workflows/build-and-test.yml)
-[![CodeFactor](https://www.codefactor.io/repository/github/jagrosh/musicbot/badge)](https://www.codefactor.io/repository/github/jagrosh/musicbot)
+[![Downloads](https://img.shields.io/github/downloads/AvianJay/MusicBot-zh_tw/total.svg)](https://github.com/AvianJay/MusicBot-zh_tw/releases/latest)
+[![Stars](https://img.shields.io/github/stars/AvianJay/MusicBot-zh_tw.svg)](https://github.com/AvianJay/MusicBot-zh_tw/stargazers)
+[![Release](https://img.shields.io/github/release/AvianJay/MusicBot-zh_tw.svg)](https://github.com/AvianJay/MusicBot-zh_tw/releases/latest)
+[![License](https://img.shields.io/github/license/AvianJay/MusicBot-zh_tw.svg)](https://github.com/AvianJay/MusicBot-zh_tw/blob/master/LICENSE)
+[![Discord(原官方)](https://discordapp.com/api/guilds/147698382092238848/widget.png)](https://discord.gg/0p9LSGoRLu6Pet0k)<br>
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/AvianJay/MusicBot-zh_tw/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/AvianJay/MusicBot-zh_tw/tree/master)
+[![Build and Test](https://github.com/AvianJay/MusicBot-zh_tw/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/AvianJay/MusicBot-zh_tw/actions/workflows/build-and-test.yml)
+[![CodeFactor](https://www.codefactor.io/repository/github/AvianJay/MusicBot-zh_tw/badge)](https://www.codefactor.io/repository/github/AvianJay/MusicBot-zh_tw)
 
 一個跨平台的 Discord 音樂機器人，擁有簡潔的介面，並且容易設定與自行運行！
 
-[![Setup](http://i.imgur.com/VvXYp5j.png)](https://jmusicbot.com/setup)
+[![Setup](http://i.imgur.com/VvXYp5j.png)](https://avianjay.github.io/MusicBot-zh_tw/setup)
 
 ## 功能
   * 簡單運行（只需確保已安裝 Java，然後執行！）
@@ -52,7 +52,7 @@ JMusicBot 支援 [lavaplayer](https://github.com/sedmelluq/lavaplayer#supported-
 ![加載範例...](https://i.imgur.com/kVtTKvS.gif)
 
 ## 設定
-請查看 [設定頁面](https://jmusicbot.com/setup) 來自行運行此機器人！
+請查看 [設定頁面](https://avianjay.github.io/MusicBot-zh_tw/setup) 來自行運行此機器人！
 
 ## 問題/建議/錯誤回報
 **請在建議功能之前閱讀 [問題列表](https://github.com/jagrosh/MusicBot/issues)**。如果你有問題、需要疑難排解幫助，或想討論新功能，請開始一個 [討論](https://github.com/jagrosh/MusicBot/discussions)。如果你想建議功能或回報可重現的錯誤，請在此儲存庫開啟一個 [問題](https://github.com/jagrosh/MusicBot/issues)。如果你喜歡這個機器人，請記得給使其運行的庫加星： [**JDA**](https://github.com/DV8FromTheWorld/JDA) 和 [**lavaplayer**](https://github.com/sedmelluq/lavaplayer)！
