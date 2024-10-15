@@ -34,8 +34,8 @@ extra:
   # analytics:
   #   provider: google
   #   property: G-XXXXXXXXXX
-repo_name: 'AvianJay/MusicBot'
-repo_url: https://github.com/AvianJay/MusicBot
+repo_name: 'AvianJay/MusicBot-zh_tw'
+repo_url: https://github.com/AvianJay/MusicBot-zh_tw
 edit_uri: edit/gh-pages/docs/
 site_url: https://avianjay.github.io/MusicBot-zh_tw
 markdown_extensions:
