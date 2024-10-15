@@ -1,26 +1,26 @@
 ---
-title: Running as a service
-description: "How to run JMusicBot as a service, so that it can run in the background without needing to be manually started."
+title: 作為服務運行
+description: "如何將 JMusicBot 作為服務運行，以便它可以在後台運行而無需手動啟動。"
 ---
 
-## Running as a service
-Running JMusicBot as a service allows it to run in the background without needing to be manually started. This is useful for running the bot on a server, or if you want to be able to close your terminal without stopping the bot.
+## 作為服務運行
+將 JMusicBot 作為服務運行可以使其在後台運行，而無需手動啟動。這對於在伺服器上運行機器人或希望能夠關閉終端而不停止機器人時非常有用。
 
-### Linux using systemd
+### 使用 systemd 的 Linux
 
 !!! warning
-    This method assumes that you've created a user for the bot to run as. If you haven't, see [this guide](https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart) for instructions.
+    此方法假設您已為機器人創建了一個用戶。如果尚未創建，請參閱 [此指南](https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart) 以獲取說明。
 
 !!! note
-    Copy the jar file to the home directory of the user that the bot is running as, or change the `WorkingDirectory` and `ExecStart` lines in the service file to point to the correct location.
+    將 jar 文件複製到機器人運行用戶的主目錄，或更改服務文件中的 `WorkingDirectory` 和 `ExecStart` 行以指向正確位置。
 
-1. Open a terminal and run the following command to create a new service file:
+1. 打開終端並運行以下命令以創建新的服務文件：
 
 ```bash
 sudo nano /etc/systemd/system/JMusicBot.service
 ```
 
-2. Copy the following text into the file and save it:
+2. 將以下文本複製到文件中並保存：
 
 ```ini
 [Unit]
@@ -42,52 +42,52 @@ WantedBy=multi-user.target
 ```
 
 !!! note
-    Replace `<username>` with the name of the user that the bot is running as.
+    將 `<username>` 替換為機器人運行的用戶名。
 
-4. Run the following command to start the bot:
+4. 運行以下命令以啟動機器人：
 
 ```bash
 sudo systemctl start JMusicBot
 ```
 
-5. Run the following command to stop the bot:
+5. 運行以下命令以停止機器人：
 
 ```bash
 sudo systemctl stop JMusicBot
 ```
 
-6. Run the following command to restart the bot:
+6. 運行以下命令以重啟機器人：
 
 ```bash
 sudo systemctl restart JMusicBot
 ```
 
-7. Run the following command to enable the bot to start on boot:
+7. 運行以下命令以啟用機器人在啟動時自動啟動：
 
 ```bash
 sudo systemctl enable JMusicBot
 ```
 
 
-### Linux using screen
+### 使用 screen 的 Linux
 
 !!! warning
-    This method is not recommended for production use, see [systemd](#linux-using-systemd) instead.
+    此方法不建議用於生產環境，請參見 [systemd](#linux-using-systemd)。
 
-1. Install the [screen](https://www.howtoforge.com/linux_screen) utility, if it isn't already installed.
-2. Run the following command to start the bot:
+1. 安裝 [screen](https://www.howtoforge.com/linux_screen) 工具（如果尚未安裝）。
+2. 運行以下命令以啟動機器人：
 
 ```bash
 screen -dmS JMusicBot java -jar JMusicBot.jar
 ```
 
-3. Run the following command to stop the bot:
+3. 運行以下命令以停止機器人：
 
 ```bash
 screen -S JMusicBot -X quit
 ```
 
-4. Run the following command to restart the bot:
+4. 運行以下命令以重啟機器人：
 
 ```bash
 screen -S JMusicBot -X quit
@@ -96,26 +96,26 @@ screen -dmS JMusicBot java -jar JMusicBot.jar
 
 ### Windows
 
-1. Download the [NSSM](https://nssm.cc/download) executable and place it in the same directory as the JMusicBot jar file.
-2. Open a command prompt in the same directory as the JMusicBot jar file and run the following command:
+1. 下載 [NSSM](https://nssm.cc/download) 可執行文件，並將其放在與 JMusicBot jar 文件相同的目錄中。
+2. 在與 JMusicBot jar 文件相同的目錄中打開命令提示符，運行以下命令：
 
 ```bat
 nssm install JMusicBot java -jar JMusicBot.jar
 ```
 
-3. Run the following command to start the service:
+3. 運行以下命令以啟動服務：
 
 ```bat
 nssm start JMusicBot
 ```
 
-4. Run the following command to stop the service:
+4. 運行以下命令以停止服務：
 
 ```bat
 nssm stop JMusicBot
 ```
 
-5. Run the following command to remove the service:
+5. 運行以下命令以刪除服務：
 
 ```bat
 nssm remove JMusicBot
