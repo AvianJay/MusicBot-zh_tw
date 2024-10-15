@@ -1,46 +1,46 @@
 ---
-title: Setup
-description: "Setup JMusicBot"
+title: 設置
+description: "設置 JMusicBot"
 ---
 
-## 1️⃣ Install Java
-* JMusicBot requires Java 11
-* Instructions on how to install Java on your system: [Installing Java](installing-java.md)
+## 1️⃣ 安裝 Java
+* JMusicBot 需要 Java 11
+* 有關如何在您的系統上安裝 Java 的說明請參閱：[安裝 Java](installing-java.md)
 
-## 2️⃣ Download JMusicBot
-* Download the latest **JMusicBot-X.Y.Z.jar** (and optionally, example **config.txt** file) from the [releases](https://github.com/jagrosh/MusicBot/releases/latest) page (or, get the URL from the releases page and then use wget or similar command-line tool to download).
-* Your folder should look similar to this (on desktop):  
+## 2️⃣ 下載 JMusicBot
+* 從 [發佈頁面](https://github.com/jagrosh/MusicBot/releases/latest) 下載最新的 **JMusicBot-X.Y.Z.jar** （還可以選擇下載示例 **config.txt** 文件）（或者，從發佈頁面獲取 URL，然後使用 wget 或類似的命令行工具進行下載）。
+* 您的文件夾應該類似於這樣（在桌面上）：  
 ![View](/assets/images/folder-view.png)
 !!! note
-    The above image is Windows, but it should look similar on all platforms  
+    上面的圖像是 Windows，但在所有平台上應該看起來相似  
 !!! warning
-    Do not put this in the *Downloads* or *Desktop*. Use a folder within *Documents*
+    不要將其放入 *下載* 或 *桌面* 文件夾。請使用 *文檔* 內的文件夾
 
-## 3️⃣ Configure the bot
-* Create a bot account and configure it on the Discord Developer page
-  * See [Getting a Bot Token](getting-a-bot-token.md) for step-by-step instructions
-  * Make sure that 'Public Bot' is unchecked, and 'Message Content Intent' and 'Server Members Intent' are checked
-* Create the config file
-  * Running the bot without a config file will prompt you for a bot token and a user ID. After you provide these, it will generate a config file for you.
-  * An example `config.txt` file can be found on [Example Config](config.md). You can create a `config.txt` file in the same folder as the bot, paste the contents of the example config file, and modify the values in it.
-  * See [Getting a Bot Token](getting-a-bot-token.md) and [Finding Your User ID](finding-your-user-id.md) if you need help with finding some values for the config.
+## 3️⃣ 配置機器人
+* 創建一個機器人帳號，並在 Discord 開發者頁面上進行配置
+  * 請參閱 [獲取機器人 Token](getting-a-bot-token.md) 以獲取逐步說明
+  * 確保取消勾選「公開機器人」，並勾選「訊息內容意圖」和「伺服器成員意圖」
+* 創建配置文件
+  * 在沒有配置文件的情況下運行機器人將提示您提供機器人 Token 和用戶 ID。提供這些信息後，系統會為您生成一個配置文件。
+  * 可以在 [示例配置](config.md) 中找到 `config.txt` 文件的示例。您可以在與機器人相同的文件夾中創建一個 `config.txt` 文件，將示例配置文件的內容粘貼到該文件中，並修改其中的值。
+  * 如果需要幫助查找配置中的一些值，請參閱 [獲取機器人 Token](getting-a-bot-token.md) 和 [查找您的用戶 ID](finding-your-user-id.md)。
 
 !!! warning
-    You must restart the bot every time you edit `config.txt`. It is recommended to fully shut down the bot before editing the file.
+    每次編輯 `config.txt` 文件後，您都必須重新啟動機器人。建議在編輯文件之前完全關閉機器人。
 
-## 4️⃣ Run JMusicBot
-* Run the jar file (choose one of these options):
-  * Double-click the jar file (on desktop environments), OR
-  * Run `java -Dnogui=true -jar JMusicBot-X.Y.Z.jar` from the command line (replace X, Y, and Z with the release numbers)
-* Provide the requested information, if prompted.
-* Wait for the "Finished Loading" message.
+## 4️⃣ 運行 JMusicBot
+* 運行 jar 文件（選擇以下其中一種方式）：
+  * 雙擊 jar 文件（在桌面環境中），或
+  * 從命令行運行 `java -Dnogui=true -jar JMusicBot-X.Y.Z.jar`（將 X、Y 和 Z 替換為發佈號）
+* 如果提示，請提供所需的信息。
+* 等待 "Finished Loading" 消息。
 
 !!! tip
-    If you want to run the bot in the background, see [Running as a Service](running-as-a-service.md)
+    如果您希望讓機器人在後台運行，請參閱 [作為服務運行](running-as-a-service.md)
 
-## 5️⃣ Add your bot to your server
-* When the bot starts, if it hasn't been added to any servers yet, it will provide you with a link in the console.
-* Alternatively, follow these instructions (with images): [Adding Your Bot To Your Server](adding-your-bot.md)
+## 5️⃣ 將機器人添加到您的伺服器
+* 當機器人啟動時，如果它尚未添加到任何伺服器，則會在控制台中提供一個鏈接。
+* 或者，請按照這些說明（附圖）：[將您的機器人添加到伺服器](adding-your-bot.md)
 
 !!! tip
-    If you run into problems, make sure to check out the [Troubleshooting](troubleshooting.md) page!
+    如果您遇到問題，請務必查看 [故障排除](troubleshooting.md) 頁面！
