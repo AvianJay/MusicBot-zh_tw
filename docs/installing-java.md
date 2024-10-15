@@ -1,23 +1,23 @@
 ---
-title: Installing Java
-description: "Install Java on your system"
+title: 安裝 Java
+description: "在你的系統上安裝 Java"
 ---
 
-# JMusicBot requires Java 11
-Some newer builds may also work, but you could run into compatibility issues. For most platforms, the easiest method to install Java is to download the installer (as listed below). Linux users can alternatively install via the command line using a package manager.
+# JMusicBot 需要 Java 11
+一些較新的版本可能也可以運行，但可能會遇到相容性問題。對於大多數平台，安裝 Java 最簡單的方法是下載安裝程式（如下面所列）。Linux 用戶可以選擇使用套件管理器通過命令行安裝。
 
-## Download Installer (any platform)
-1. Navigate to [Adoptium](https://adoptium.net/temurin/releases/?version=11&package=jre) or [Oracle](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html)
-2. Download the correct installer for your system
-3. Run the installer or manually install the package (depending on your selection)
+## 下載安裝程式（適用於任何平台）
+1. 前往 [Adoptium](https://adoptium.net/temurin/releases/?version=11&package=jre) 或 [Oracle](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html)
+2. 下載與你的系統相符的安裝程式
+3. 執行安裝程式或手動安裝該套件（取決於你的選擇）
 
-## Install via Command Line (Linux only)
-!!! tip
-    If you have multiple Java versions installed, you can use `sudo update-alternatives --config java` to select which will be used by default. You can run `java -version` to see what version is currently the default.
+## 通過命令行安裝（僅限 Linux）
+!!! 提示
+    如果你安裝了多個 Java 版本，可以使用 `sudo update-alternatives --config java` 來選擇預設使用哪一個版本。你可以執行 `java -version` 來查看當前的預設版本。
 ### Ubuntu
-1. Run: `sudo apt-get update && sudo apt-get install openjdk-11-jre -y`
+1. 執行：`sudo apt-get update && sudo apt-get install openjdk-11-jre -y`
 ### Debian 
-1. Install `sudo` if not installed (`apt update && apt upgrade && apt install sudo`)  
-2. Run: `sudo apt-get install default-jre`
+1. 如果尚未安裝 `sudo`，請執行安裝（`apt update && apt upgrade && apt install sudo`）
+2. 執行：`sudo apt-get install default-jre`
 ### Raspbian (Raspberry Pi)
-1. Run: `sudo apt-get install oracle-java11-jdk`
+1. 執行：`sudo apt-get install oracle-java11-jdk`
