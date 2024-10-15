@@ -65,6 +65,6 @@ jobs:
             
             ---
             ### 設定
-            https://jmusicbot.com/setup  
-            https://jmusicbot.com/config  
+            https://avianjay.github.io/MusicBot-zh_tw/setup  
+            https://avianjay.github.io/MusicBot-zh_tw/config  
             # 下載: [JMusicBot-${{ github.event.inputs.version_number }}.jar](https://github.com/AvianJay/MusicBot-zh_tw/releases/download/${{ github.event.inputs.version_number }}/JMusicBot-${{ github.event.inputs.version_number }}.jar)
