@@ -10,7 +10,7 @@ description: "設置 JMusicBot"
 ## 2️⃣ 下載 JMusicBot
 * 從 [發佈頁面](https://github.com/jagrosh/MusicBot/releases/latest) 下載最新的 **JMusicBot-X.Y.Z.jar** （還可以選擇下載示例 **config.txt** 文件）（或者，從發佈頁面獲取 URL，然後使用 wget 或類似的命令行工具進行下載）。
 * 您的文件夾應該類似於這樣（在桌面上）：  
-![View](/assets/images/folder-view.png)
+![View](../assets/images/folder-view.png)
 !!! note
     上面的圖像是 Windows，但在所有平台上應該看起來相似  
 !!! warning
