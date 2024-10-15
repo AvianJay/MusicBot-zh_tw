@@ -1,36 +1,35 @@
 ---
-title: Getting a Bot Token
-description: "Instructions for how to create and obtain a Discord bot token"
+title: 獲取機器人 Token
+description: "如何創建並獲取 Discord 機器人 token 的說明"
 ---
 
-This page will describe, in detail, how to obtain a token for your music bot.
+此頁面將詳細描述如何為您的音樂機器人獲取 token。
 
-1. Navigate to your [Applications Page](https://discordapp.com/login?redirect_to=/developers/applications) (you might need to log in first)
+1. 前往您的 [應用程序頁面](https://discordapp.com/login?redirect_to=/developers/applications)（您可能需要先登錄）
 
-2. Click the *Create an application* button  
-![New App](/assets/images/create-application.png)
+2. 點擊*創建應用程序*按鈕  
+![新應用程序](../assets/images/create-application.png)
 
-3. On the **General Information** tab, set a Name to identify your application (this is not the bot's name)  
-![Create App](/assets/images/general-info.png)
+3. 在 **General Information** 標籤中，設置一個名稱以識別您的應用程序（這不是機器人的名稱）  
+![創建應用程序](../assets/images/general-info.png)
 
-4. Navigate to the **Bot** tab and select **Add Bot**  
-![Add Bot](/assets/images/add-bot.png)
+4. 前往 **Bot** 標籤並選擇 **Add Bot**  
+![添加機器人](../assets/images/add-bot.png)
 
-5. Click *Yes, do it!*  
-![Yes](/assets/images/yes-do-it.png)
+5. 點擊*Yes, do it!*  
+![Yes](../assets/images/yes-do-it.png)
 
-6. Set a name and an avatar (optional)
-![Settings](/assets/images/customize-bot.png)
+6. 設置名稱和頭像（可選）  
+![設置](../assets/images/customize-bot.png)
 
-7. Uncheck **Public Bot** and Check **Message Content Intent** and **Server Members Intents**
-![Message Content Intent](/assets/images/oauth-and-intents.png)
+7. 取消勾選 **Public Bot**（可選），並勾選 **Message Content Intent** 和 **Server Members Intents**  
+![消息內容意圖](../assets/images/oauth-and-intents.png)
 
     !!! warning
-        If **Public Bot** is left checked, anyone will be able to invite your bot into servers. JMusicBot is not
-        intended to be used as a public music bot, and **will break on verified bots!**
+        JMusicBot 並非設計為公共音樂機器人，建議別對外開放。
 
-8. Save your settings  
-![Save](/assets/images/save-changes.png)
+8. 保存您的設置  
+![保存](../assets/images/save-changes.png)
 
-9. Select the **Copy** button in the token section to copy the bot's token to your clipboard.  
-![Copy Token](/assets/images/copy-token.png)
+9. 在 token 部分選擇 **Copy** 按鈕，將機器人的 token 複製到剪貼板。  
+![複製 token](../assets/images/copy-token.png)
