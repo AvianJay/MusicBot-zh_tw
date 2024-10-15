@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="How to run JMusicBot as a service, so that it can run in the background without needing to be manually started.">
+        <meta name="description" content="如何將 JMusicBot 作為服務運行，以便它可以在後台運行而無需手動啟動。">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Running as a service - JMusicBot 維基</title>
+        <title>作為服務運行 - JMusicBot 維基</title>
       
     
     
@@ -64,8 +64,8 @@
 
   <!-- Open graph meta tags -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="JMusicBot 維基 - Running as a service" />
-  <meta property="og:description" content="How to run JMusicBot as a service, so that it can run in the background without needing to be manually started." />
+  <meta property="og:title" content="JMusicBot 維基 - 作為服務運行" />
+  <meta property="og:description" content="如何將 JMusicBot 作為服務運行，以便它可以在後台運行而無需手動啟動。" />
   <meta property="og:url" content="https://avianjay.github.io/MusicBot-zh_tw/running-as-a-service/" />
   <meta property="og:image" content="https://avianjay.github.io/MusicBot-zh_tw/assets/images/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -74,8 +74,8 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@jagrosh" />
   <meta name="twitter:creator" content="@jagrosh" />
-  <meta name="twitter:title" content="JMusicBot 維基 - Running as a service" />
-  <meta name="twitter:description" content="How to run JMusicBot as a service, so that it can run in the background without needing to be manually started." />
+  <meta name="twitter:title" content="JMusicBot 維基 - 作為服務運行" />
+  <meta name="twitter:description" content="如何將 JMusicBot 作為服務運行，以便它可以在後台運行而無需手動啟動。" />
   <meta name="twitter:image" content="https://avianjay.github.io/MusicBot-zh_tw/assets/images/logo.png" />
 
   </head>
@@ -101,7 +101,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#running-as-a-service" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -133,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Running as a service
+              作為服務運行
             
           </span>
         </div>
@@ -453,12 +453,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Running as a service
+          作為服務運行
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Running as a service
+        作為服務運行
       </a>
       
         
@@ -476,23 +476,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#running-as-a-service" class="md-nav__link">
-    Running as a service
+  <a href="#_1" class="md-nav__link">
+    作為服務運行
   </a>
   
-    <nav class="md-nav" aria-label="Running as a service">
+    <nav class="md-nav" aria-label="作為服務運行">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#linux-using-systemd" class="md-nav__link">
-    Linux using systemd
+  <a href="#systemd-linux" class="md-nav__link">
+    使用 systemd 的 Linux
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#linux-using-screen" class="md-nav__link">
-    Linux using screen
+  <a href="#screen-linux" class="md-nav__link">
+    使用 screen 的 Linux
   </a>
   
 </li>
@@ -684,23 +684,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#running-as-a-service" class="md-nav__link">
-    Running as a service
+  <a href="#_1" class="md-nav__link">
+    作為服務運行
   </a>
   
-    <nav class="md-nav" aria-label="Running as a service">
+    <nav class="md-nav" aria-label="作為服務運行">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#linux-using-systemd" class="md-nav__link">
-    Linux using systemd
+  <a href="#systemd-linux" class="md-nav__link">
+    使用 systemd 的 Linux
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#linux-using-screen" class="md-nav__link">
-    Linux using screen
+  <a href="#screen-linux" class="md-nav__link">
+    使用 screen 的 Linux
   </a>
   
 </li>
@@ -734,26 +734,26 @@
                   </a>
                 
                 
-                  <h1>Running as a service</h1>
+                  <h1>作為服務運行</h1>
                 
-                <h2 id="running-as-a-service">Running as a service<a class="headerlink" href="#running-as-a-service" title="Permanent link">#</a></h2>
-<p>Running JMusicBot as a service allows it to run in the background without needing to be manually started. This is useful for running the bot on a server, or if you want to be able to close your terminal without stopping the bot.</p>
-<h3 id="linux-using-systemd">Linux using systemd<a class="headerlink" href="#linux-using-systemd" title="Permanent link">#</a></h3>
+                <h2 id="_1">作為服務運行<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<p>將 JMusicBot 作為服務運行可以使其在後台運行，而無需手動啟動。這對於在伺服器上運行機器人或希望能夠關閉終端而不停止機器人時非常有用。</p>
+<h3 id="systemd-linux">使用 systemd 的 Linux<a class="headerlink" href="#systemd-linux" title="Permanent link">#</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This method assumes that you've created a user for the bot to run as. If you haven't, see <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart">this guide</a> for instructions.</p>
+<p>此方法假設您已為機器人創建了一個用戶。如果尚未創建，請參閱 <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart">此指南</a> 以獲取說明。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Copy the jar file to the home directory of the user that the bot is running as, or change the <code>WorkingDirectory</code> and <code>ExecStart</code> lines in the service file to point to the correct location.</p>
+<p>將 jar 文件複製到機器人運行用戶的主目錄，或更改服務文件中的 <code>WorkingDirectory</code> 和 <code>ExecStart</code> 行以指向正確位置。</p>
 </div>
 <ol>
-<li>Open a terminal and run the following command to create a new service file:</li>
+<li>打開終端並運行以下命令以創建新的服務文件：</li>
 </ol>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/systemd/system/JMusicBot.service
 </code></pre></div>
 <ol>
-<li>Copy the following text into the file and save it:</li>
+<li>將以下文本複製到文件中並保存：</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="k">[Unit]</span>
 <span class="na">Description</span><span class="o">=</span><span class="s">JMusicBot</span>
@@ -774,69 +774,69 @@
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Replace <code>&lt;username&gt;</code> with the name of the user that the bot is running as.</p>
+<p>將 <code>&lt;username&gt;</code> 替換為機器人運行的用戶名。</p>
 </div>
 <ol>
-<li>Run the following command to start the bot:</li>
+<li>運行以下命令以啟動機器人：</li>
 </ol>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>JMusicBot
 </code></pre></div>
 <ol>
-<li>Run the following command to stop the bot:</li>
+<li>運行以下命令以停止機器人：</li>
 </ol>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>JMusicBot
 </code></pre></div>
 <ol>
-<li>Run the following command to restart the bot:</li>
+<li>運行以下命令以重啟機器人：</li>
 </ol>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>JMusicBot
 </code></pre></div>
 <ol>
-<li>Run the following command to enable the bot to start on boot:</li>
+<li>運行以下命令以啟用機器人在啟動時自動啟動：</li>
 </ol>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>JMusicBot
 </code></pre></div>
-<h3 id="linux-using-screen">Linux using screen<a class="headerlink" href="#linux-using-screen" title="Permanent link">#</a></h3>
+<h3 id="screen-linux">使用 screen 的 Linux<a class="headerlink" href="#screen-linux" title="Permanent link">#</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This method is not recommended for production use, see <a href="#linux-using-systemd">systemd</a> instead.</p>
+<p>此方法不建議用於生產環境，請參見 <a href="#linux-using-systemd">systemd</a>。</p>
 </div>
 <ol>
-<li>Install the <a href="https://www.howtoforge.com/linux_screen">screen</a> utility, if it isn't already installed.</li>
-<li>Run the following command to start the bot:</li>
+<li>安裝 <a href="https://www.howtoforge.com/linux_screen">screen</a> 工具（如果尚未安裝）。</li>
+<li>運行以下命令以啟動機器人：</li>
 </ol>
 <div class="highlight"><pre><span></span><code>screen<span class="w"> </span>-dmS<span class="w"> </span>JMusicBot<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>JMusicBot.jar
 </code></pre></div>
 <ol>
-<li>Run the following command to stop the bot:</li>
+<li>運行以下命令以停止機器人：</li>
 </ol>
 <div class="highlight"><pre><span></span><code>screen<span class="w"> </span>-S<span class="w"> </span>JMusicBot<span class="w"> </span>-X<span class="w"> </span>quit
 </code></pre></div>
 <ol>
-<li>Run the following command to restart the bot:</li>
+<li>運行以下命令以重啟機器人：</li>
 </ol>
 <div class="highlight"><pre><span></span><code>screen<span class="w"> </span>-S<span class="w"> </span>JMusicBot<span class="w"> </span>-X<span class="w"> </span>quit
 screen<span class="w"> </span>-dmS<span class="w"> </span>JMusicBot<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>JMusicBot.jar
 </code></pre></div>
 <h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">#</a></h3>
 <ol>
-<li>Download the <a href="https://nssm.cc/download">NSSM</a> executable and place it in the same directory as the JMusicBot jar file.</li>
-<li>Open a command prompt in the same directory as the JMusicBot jar file and run the following command:</li>
+<li>下載 <a href="https://nssm.cc/download">NSSM</a> 可執行文件，並將其放在與 JMusicBot jar 文件相同的目錄中。</li>
+<li>在與 JMusicBot jar 文件相同的目錄中打開命令提示符，運行以下命令：</li>
 </ol>
 <div class="highlight"><pre><span></span><code>nssm install JMusicBot java -jar JMusicBot.jar
 </code></pre></div>
 <ol>
-<li>Run the following command to start the service:</li>
+<li>運行以下命令以啟動服務：</li>
 </ol>
 <div class="highlight"><pre><span></span><code>nssm start JMusicBot
 </code></pre></div>
 <ol>
-<li>Run the following command to stop the service:</li>
+<li>運行以下命令以停止服務：</li>
 </ol>
 <div class="highlight"><pre><span></span><code>nssm stop JMusicBot
 </code></pre></div>
 <ol>
-<li>Run the following command to remove the service:</li>
+<li>運行以下命令以刪除服務：</li>
 </ol>
 <div class="highlight"><pre><span></span><code>nssm remove JMusicBot
 </code></pre></div>
