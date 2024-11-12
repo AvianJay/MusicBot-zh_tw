@@ -14,6 +14,7 @@
 一個跨平台的 Discord 音樂機器人，擁有簡潔的介面，並且容易設定與自行運行！
 
 [![Setup](http://i.imgur.com/VvXYp5j.png)](https://avianjay.github.io/MusicBot-zh_tw/setup)
+[加入我的機器人](https://discord.com/oauth2/authorize?client_id=1295299324414001152&permissions=274910718016&integration_type=0&scope=bot)
 
 ## 功能
   * 簡單運行（只需確保已安裝 Java，然後執行！）
