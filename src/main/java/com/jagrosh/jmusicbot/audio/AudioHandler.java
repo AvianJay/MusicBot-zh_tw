@@ -39,6 +39,7 @@ import net.dv8tion.jda.api.audio.AudioSendHandler;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.User;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -51,6 +52,7 @@ public class AudioHandler extends AudioEventAdapter implements AudioSendHandler
     public final static String PAUSE_EMOJI = "\u23F8"; // ⏸
     public final static String STOP_EMOJI  = "\u23F9"; // ⏹
 
+    private final static Logger LOGGER = LoggerFactory.getLogger(AudioHandler.class);
 
     private final List<AudioTrack> defaultQueue = new LinkedList<>();
     private final Set<String> votes = new HashSet<>();
@@ -200,8 +202,22 @@ public class AudioHandler extends AudioEventAdapter implements AudioSendHandler
     }
 
     @Override
-    public void onTrackException(AudioPlayer player, AudioTrack track, FriendlyException exception) {
-        LoggerFactory.getLogger("AudioHandler").error("曲目 " + track.getIdentifier() + " 播放失敗", exception);
+    public void onTrackException(AudioPlayer player, AudioTrack track, FriendlyException exception)
+    {
+        if (
+            exception.getMessage().equals("Sign in to confirm you're not a bot")
+            || exception.getMessage().equals("Please sign in")
+            || exception.getMessage().equals("This video requires login.")
+        )
+            LOGGER.error(
+                "曲目 {} 無法播放：{}。"
+                + "您需要登入 Google 以播放 YouTube 曲目。"
+                + "詳細資訊：(還沒有等我做)",
+                track.getIdentifier(),
+                exception.getMessage()
+            );
+        else
+            LOGGER.error("曲目 " + track.getIdentifier() + " 播放失敗", exception);
     }
 
     @Override

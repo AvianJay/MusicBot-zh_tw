@@ -26,6 +26,7 @@ import com.jagrosh.jmusicbot.gui.GUI;
 import com.jagrosh.jmusicbot.playlist.PlaylistLoader;
 import com.jagrosh.jmusicbot.settings.SettingsManager;
 import java.util.Objects;
+import com.jagrosh.jmusicbot.utils.YoutubeOauth2TokenHandler;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.Guild;
@@ -44,24 +45,28 @@ public class Bot
     private final PlaylistLoader playlists;
     private final NowplayingHandler nowplaying;
     private final AloneInVoiceHandler aloneInVoiceHandler;
+    private final YoutubeOauth2TokenHandler youTubeOauth2TokenHandler;
+    private final GUI gui;
     
     private boolean shuttingDown = false;
     private JDA jda;
-    private GUI gui;
     
-    public Bot(EventWaiter waiter, BotConfig config, SettingsManager settings)
+    public Bot(EventWaiter waiter, BotConfig config, SettingsManager settings, GUI gui)
     {
         this.waiter = waiter;
         this.config = config;
         this.settings = settings;
         this.playlists = new PlaylistLoader(config);
         this.threadpool = Executors.newSingleThreadScheduledExecutor();
+        this.youTubeOauth2TokenHandler = new YoutubeOauth2TokenHandler();
+        this.youTubeOauth2TokenHandler.init();
         this.players = new PlayerManager(this);
         this.players.init();
         this.nowplaying = new NowplayingHandler(this);
         this.nowplaying.init();
         this.aloneInVoiceHandler = new AloneInVoiceHandler(this);
         this.aloneInVoiceHandler.init();
+        this.gui = gui;
     }
     
     public BotConfig getConfig()
@@ -102,6 +107,11 @@ public class Bot
     public AloneInVoiceHandler getAloneInVoiceHandler()
     {
         return aloneInVoiceHandler;
+    }
+
+    public YoutubeOauth2TokenHandler getYouTubeOauth2Handler()
+    {
+        return youTubeOauth2TokenHandler;
     }
     
     public JDA getJDA()
@@ -151,10 +161,5 @@ public class Bot
     public void setJDA(JDA jda)
     {
         this.jda = jda;
-    }
-    
-    public void setGUI(GUI gui)
-    {
-        this.gui = gui;
     }
 }

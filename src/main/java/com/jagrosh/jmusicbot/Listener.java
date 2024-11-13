@@ -15,8 +15,10 @@ package com.jagrosh.jmusicbot;
 
 import com.jagrosh.jmusicbot.utils.OtherUtil;
 import java.util.concurrent.TimeUnit;
+import com.jagrosh.jmusicbot.utils.YoutubeOauth2TokenHandler;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.PrivateChannel;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.entities.VoiceChannel;
 import net.dv8tion.jda.api.events.ReadyEvent;
@@ -82,6 +84,26 @@ public class Listener extends ListenerAdapter
                 }
                 catch(Exception ignored) {} // 忽略的例外
             }, 0, 24, TimeUnit.HOURS);
+        }
+        if (bot.getConfig().useYoutubeOauth2()) // 檢查是否啟用了 YouTube Oauth2
+        {
+            YoutubeOauth2TokenHandler.Data data = bot.getYouTubeOauth2Handler().getData();
+            if (data != null) // 檢查是否獲取到授權資料
+            {
+                try
+                {
+                    PrivateChannel channel = bot.getJDA().openPrivateChannelById(bot.getConfig().getOwnerId()).complete();
+                    channel
+                        .sendMessage(
+                            "# 請勿使用您的主要 Google 帳戶授權此操作!!!\n" // 提醒不要用主要的 Google 帳戶授權
+                            + "## 請創建或使用其他/一次性 Google 帳戶！\n" // 建議使用備用或一次性帳戶
+                            + "要讓 JMusicBot 存取您的 Google 帳戶，請前往 "
+                            + data.getAuthorisationUrl() // 顯示授權網址
+                            + " 並輸入代碼 **" + data.getCode() + "**") // 顯示授權碼
+                        .queue();
+                }
+                catch (Exception ignored) {} // 忽略任何例外情況
+            }
         }
     }
     

@@ -81,34 +81,36 @@ public class JMusicBot
         config.load();
         if(!config.isValid())
             return;
-        LOG.info("從 " + config.getConfigLocation() + " 載入配置");
 
-        // 根據配置設置日誌級別
-        ((ch.qos.logback.classic.Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME)).setLevel(
-                Level.toLevel(config.getLogLevel(), Level.INFO));
-        
-        // 設置監聽器
-        EventWaiter waiter = new EventWaiter();
-        SettingsManager settings = new SettingsManager();
-        Bot bot = new Bot(waiter, config, settings);
-        CommandClient client = createCommandClient(config, settings, bot);
-        
+        GUI gui = null;
         
         if(!prompt.isNoGUI())
         {
-            try 
+            try
             {
-                GUI gui = new GUI(bot);
-                bot.setGUI(gui);
+                gui = new GUI();
                 gui.init();
-
-                LOG.info("從 " + config.getConfigLocation() + " 載入配置");
             }
             catch(Exception e)
             {
                 LOG.error("無法啟動 GUI。如果您在伺服器上運行或在無法顯示窗口的地方，請使用 -Dnogui=true 標誌以無 GUI 模式運行。");
             }
         }
+        
+        LOG.info("已從 " + config.getConfigLocation() + " 載入配置");
+
+        // set log level from config
+        ((ch.qos.logback.classic.Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME)).setLevel(
+                Level.toLevel(config.getLogLevel(), Level.INFO));
+        
+        // set up the listener
+        EventWaiter waiter = new EventWaiter();
+        SettingsManager settings = new SettingsManager();
+        Bot bot = new Bot(waiter, config, settings, gui);
+        if (gui != null)
+            gui.setBot(bot);    
+        CommandClient client = createCommandClient(config, settings, bot);
+
         
         // 嘗試登錄並啟動
         try
